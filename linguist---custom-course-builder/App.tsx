@@ -15,11 +15,12 @@ import SearchView from './components/SearchView';
 import NotificationsView from './components/NotificationsView';
 import ProfileView from './components/ProfileView';
 import MyListsView from './components/MyListsView';
+import AIChatsView from './components/AIChatsView';
 import { CourseData, Lesson, UserStats, Exercise, ProficiencyLevel, NotificationSettings } from './types';
 import { DUMMY_COURSE } from './constants';
 
 const App: React.FC = () => {
-  const [activeView, setActiveView] = useState<'home' | 'settings' | 'profile' | 'vocabulary' | 'review' | 'writing' | 'culture' | 'grammar' | 'games' | 'search' | 'notifications' | 'my-lists'>('home');
+  const [activeView, setActiveView] = useState<'home' | 'settings' | 'profile' | 'vocabulary' | 'review' | 'writing' | 'culture' | 'grammar' | 'games' | 'search' | 'notifications' | 'my-lists' | 'ai-chats'>('home');
   const [autoOpenLanguages, setAutoOpenLanguages] = useState(false);
   const [availableCourses, setAvailableCourses] = useState<CourseData[]>(() => {
     const saved = localStorage.getItem('linguist_courses_v2');
@@ -258,6 +259,7 @@ const App: React.FC = () => {
         {activeView === 'notifications' && <NotificationsView settings={stats.notifications} onUpdate={handleUpdateNotifications} />}
         {activeView === 'my-lists' && <MyListsView dictionary={course.dictionary} savedWordIds={stats.savedWordIds[course.language] || []} onToggleSaveWord={handleToggleSaveWord} />}
         {activeView === 'profile' && <ProfileView stats={stats} />}
+        {activeView === 'ai-chats' && <AIChatsView currentLanguage={course.language} />}
         
         {activeView === 'settings' && (
           <SettingsView 

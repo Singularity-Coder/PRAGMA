@@ -96,6 +96,21 @@ export interface NotificationSettings {
   motivationalAlerts: boolean;
 }
 
+export interface ChatMessage {
+  role: 'user' | 'model';
+  text: string;
+  timestamp: string;
+}
+
+export interface AICharacter {
+  id: string;
+  name: string;
+  avatar: string;
+  role: string;
+  description: string;
+  personality: string;
+}
+
 export interface UserStats {
   xp: number;
   level: number;

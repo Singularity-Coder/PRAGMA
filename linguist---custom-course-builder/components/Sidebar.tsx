@@ -4,7 +4,7 @@ import { PROFICIENCY_LEVELS } from '../constants';
 import { ProficiencyLevel } from '../types';
 
 interface SidebarProps {
-  onNavClick: (view: 'home' | 'settings' | 'profile' | 'vocabulary' | 'writing' | 'culture' | 'grammar' | 'games' | 'search' | 'notifications' | 'my-lists') => void;
+  onNavClick: (view: 'home' | 'settings' | 'profile' | 'vocabulary' | 'writing' | 'culture' | 'grammar' | 'games' | 'search' | 'notifications' | 'my-lists' | 'ai-chats') => void;
   activeView: string;
   xp: number;
   streak: number;
@@ -19,6 +19,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onNavClick, activeView, xp, streak, h
     { id: 'search', label: 'SEARCH', icon: '🔍' },
     { id: 'vocabulary', label: 'VOCABULARY', icon: '📖' },
     { id: 'my-lists', label: 'MY LISTS', icon: '📂' },
+    { id: 'ai-chats', label: 'AI CHATS', icon: '💬' },
     { id: 'grammar', label: 'GRAMMAR', icon: '📝' },
     { id: 'games', label: 'GAMES', icon: '🎮' },
     { id: 'writing', label: 'WRITING', icon: '✏️' },
@@ -55,6 +56,17 @@ const Sidebar: React.FC<SidebarProps> = ({ onNavClick, activeView, xp, streak, h
           </div>
         </div>
 
+        {/* Daily Goal Progress */}
+        <div className="p-3 duo-card bg-gray-50/50 border-gray-100 space-y-2">
+          <div className="flex justify-between items-center">
+            <h3 className="font-black text-[9px] text-gray-400 uppercase tracking-widest">Daily Goal</h3>
+            <span className="text-[9px] font-black text-gray-500">{goalProgress}%</span>
+          </div>
+          <div className="progress-bar !h-2">
+             <div className="progress-fill" style={{ width: `${goalProgress}%` }} />
+          </div>
+        </div>
+
         {/* Stats Section: Streak and Hearts */}
         <div className="grid grid-cols-2 gap-2">
           <div className="flex items-center space-x-2 p-2 rounded-xl bg-orange-50 border border-orange-100 font-black text-orange-500">
@@ -64,17 +76,6 @@ const Sidebar: React.FC<SidebarProps> = ({ onNavClick, activeView, xp, streak, h
           <div className="flex items-center space-x-2 p-2 rounded-xl bg-red-50 border border-red-100 font-black text-red-500">
             <span>❤️</span>
             <span className="text-xs">{hearts}</span>
-          </div>
-        </div>
-
-        {/* Daily Goal Progress */}
-        <div className="p-3 duo-card bg-gray-50/50 border-gray-100 space-y-2">
-          <div className="flex justify-between items-center">
-            <h3 className="font-black text-[9px] text-gray-400 uppercase tracking-widest">Daily Goal</h3>
-            <span className="text-[9px] font-black text-gray-500">{goalProgress}%</span>
-          </div>
-          <div className="progress-bar !h-2">
-             <div className="progress-fill" style={{ width: `${goalProgress}%` }} />
           </div>
         </div>
       </div>

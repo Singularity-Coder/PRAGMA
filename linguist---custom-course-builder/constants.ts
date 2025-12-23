@@ -165,6 +165,16 @@ export const DUMMY_COURSE: CourseData = {
   ],
   cultureItems: [
     {
+      id: 'cp-v1',
+      title: 'Shakespeare: The Animated Biography',
+      category: 'Famous people',
+      description: 'A quick and engaging visual biography of the Bard of Avon.',
+      type: 'video',
+      thumbnailUrl: 'https://img.youtube.com/vi/uO_mUat_6zE/maxresdefault.jpg',
+      mediaUrl: 'https://www.youtube.com/watch?v=uO_mUat_6zE',
+      platform: 'YouTube'
+    },
+    {
       id: 'cp1',
       title: 'William Shakespeare',
       category: 'Famous people',
@@ -172,6 +182,16 @@ export const DUMMY_COURSE: CourseData = {
       type: 'image',
       thumbnailUrl: 'https://images.unsplash.com/photo-1581344779180-25805586617c?q=80&w=800&auto=format&fit=crop',
       platform: 'Info'
+    },
+    {
+      id: 'ca-v1',
+      title: 'Understanding Van Gogh\'s Starry Night',
+      category: 'Art & Masterpieces',
+      description: 'An in-depth analysis of the techniques and symbolism in Van Gogh\'s most famous work.',
+      type: 'video',
+      thumbnailUrl: 'https://img.youtube.com/vi/Oatf3m9m6v4/maxresdefault.jpg',
+      mediaUrl: 'https://www.youtube.com/watch?v=Oatf3m9m6v4',
+      platform: 'YouTube'
     },
     {
       id: 'ca1',
@@ -183,6 +203,26 @@ export const DUMMY_COURSE: CourseData = {
       platform: 'Museum'
     },
     {
+      id: 'cb-v1',
+      title: 'Top 10 Essential English Books',
+      category: 'Books',
+      description: 'A curated list of books every English learner should read to master the language.',
+      type: 'video',
+      thumbnailUrl: 'https://img.youtube.com/vi/E8T63tXInD0/maxresdefault.jpg',
+      mediaUrl: 'https://www.youtube.com/watch?v=E8T63tXInD0',
+      platform: 'YouTube'
+    },
+    {
+      id: 'cm-v1',
+      title: 'The Evolution of British TV',
+      category: 'Movies & TV series',
+      description: 'Discover how British television evolved from radio roots to modern global hits.',
+      type: 'video',
+      thumbnailUrl: 'https://img.youtube.com/vi/vF0lPez0r0A/maxresdefault.jpg',
+      mediaUrl: 'https://www.youtube.com/watch?v=vF0lPez0r0A',
+      platform: 'YouTube'
+    },
+    {
       id: 'cm1',
       title: 'Sherlock',
       category: 'Movies & TV series',
@@ -190,6 +230,16 @@ export const DUMMY_COURSE: CourseData = {
       type: 'video',
       thumbnailUrl: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800&auto=format&fit=crop',
       platform: 'Netflix'
+    },
+    {
+      id: 'cmu-v1',
+      title: 'The Beatles: A Documentary Journey',
+      category: 'Music & Artists',
+      description: 'The story of the band that changed music history forever.',
+      type: 'video',
+      thumbnailUrl: 'https://img.youtube.com/vi/3Z2b7S-S5Y0/maxresdefault.jpg',
+      mediaUrl: 'https://www.youtube.com/watch?v=3Z2b7S-S5Y0',
+      platform: 'YouTube'
     },
     {
       id: 'cmu1',
@@ -201,6 +251,16 @@ export const DUMMY_COURSE: CourseData = {
       platform: 'Spotify'
     },
     {
+      id: 'cf-v1',
+      title: 'Legends of British Folklore',
+      category: 'Folklore & Traditions',
+      description: 'Explore the myths of King Arthur, Robin Hood, and mysterious creatures of the Isles.',
+      type: 'video',
+      thumbnailUrl: 'https://img.youtube.com/vi/M5fE8PjL0-w/maxresdefault.jpg',
+      mediaUrl: 'https://www.youtube.com/watch?v=M5fE8PjL0-w',
+      platform: 'YouTube'
+    },
+    {
       id: 'cf1',
       title: 'Robin Hood',
       category: 'Folklore & Traditions',
@@ -208,6 +268,16 @@ export const DUMMY_COURSE: CourseData = {
       type: 'image',
       thumbnailUrl: 'https://images.unsplash.com/photo-1599408162165-403294430f83?q=80&w=800&auto=format&fit=crop',
       platform: 'Folklore'
+    },
+    {
+      id: 'ci-v1',
+      title: 'Big Ben: The Restoration Secrets',
+      category: 'Icons & Landmarks',
+      description: 'Go inside the clock tower to see how London\'s most famous landmark was restored.',
+      type: 'video',
+      thumbnailUrl: 'https://img.youtube.com/vi/U8Vz6r-6Xsk/maxresdefault.jpg',
+      mediaUrl: 'https://www.youtube.com/watch?v=U8Vz6r-6Xsk',
+      platform: 'YouTube'
     },
     {
       id: 'ci1',
@@ -219,6 +289,16 @@ export const DUMMY_COURSE: CourseData = {
       platform: 'Landmark'
     },
     {
+      id: 'cr-v1',
+      title: 'The History of Westminster Abbey',
+      category: 'Religion & Beliefs',
+      description: 'The royal church that has seen every coronation since 1066.',
+      type: 'video',
+      thumbnailUrl: 'https://img.youtube.com/vi/qY_3Q6yE2b0/maxresdefault.jpg',
+      mediaUrl: 'https://www.youtube.com/watch?v=qY_3Q6yE2b0',
+      platform: 'YouTube'
+    },
+    {
       id: 'cr1',
       title: 'Westminster Abbey',
       category: 'Religion & Beliefs',
@@ -226,6 +306,16 @@ export const DUMMY_COURSE: CourseData = {
       type: 'image',
       thumbnailUrl: 'https://images.unsplash.com/photo-1549114844-381603502224?q=80&w=800&auto=format&fit=crop',
       platform: 'Religion'
+    },
+    {
+      id: 'cfest-v1',
+      title: 'The Magic of Glastonbury Festival',
+      category: 'Festivals',
+      description: 'Experience the atmosphere of the world\'s most famous music and performing arts festival.',
+      type: 'video',
+      thumbnailUrl: 'https://img.youtube.com/vi/7w8rQzPInCg/maxresdefault.jpg',
+      mediaUrl: 'https://www.youtube.com/watch?v=7w8rQzPInCg',
+      platform: 'YouTube'
     },
     {
       id: 'cfest1',

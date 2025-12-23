@@ -10,7 +10,7 @@ interface VocabularyViewProps {
 }
 
 const VocabularyView: React.FC<VocabularyViewProps> = ({ dictionary = [], savedWordIds, onToggleSave }) => {
-  const [activeTab, setActiveTab] = useState<'alphabet' | 'dictionary' | 'saved'>('alphabet');
+  const [activeTab, setActiveTab] = useState<'alphabet' | 'dictionary'>('alphabet');
   const [searchTerm, setSearchTerm] = useState("");
   
   const vowels = ['A', 'E', 'I', 'O', 'U'];
@@ -27,8 +27,6 @@ const VocabularyView: React.FC<VocabularyViewProps> = ({ dictionary = [], savedW
     entry.word.toLowerCase().includes(searchTerm.toLowerCase()) || 
     entry.translation.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
-  const savedWords = dictionary.filter(entry => savedWordIds.includes(entry.id));
 
   const renderWordCard = (entry: DictionaryEntry) => {
     const isSaved = savedWordIds.includes(entry.id);
@@ -66,7 +64,6 @@ const VocabularyView: React.FC<VocabularyViewProps> = ({ dictionary = [], savedW
     );
   };
 
-  // Fix: Use React.FC to handle reserved props like 'key' when component is used in JSX mapping
   const LetterButton: React.FC<{ letter: string; type: 'vowel' | 'consonant' }> = ({ letter, type }) => {
     const activeColors = type === 'vowel' 
       ? 'hover:border-[#ffc800] hover:bg-[#fff9e6] group-hover:text-[#ffc800]' 
@@ -96,7 +93,6 @@ const VocabularyView: React.FC<VocabularyViewProps> = ({ dictionary = [], savedW
           {[
             { id: 'alphabet', label: 'Alphabet', icon: '🔤' },
             { id: 'dictionary', label: 'Dictionary', icon: '📖' },
-            { id: 'saved', label: 'My Words', icon: '★' },
           ].map((tab) => (
             <button
               key={tab.id}
@@ -158,28 +154,6 @@ const VocabularyView: React.FC<VocabularyViewProps> = ({ dictionary = [], savedW
               </div>
             )}
           </div>
-        </div>
-      )}
-
-      {activeTab === 'saved' && (
-        <div className="animate-in fade-in slide-in-from-bottom duration-300">
-          {savedWords.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {savedWords.map(renderWordCard)}
-            </div>
-          ) : (
-            <div className="py-32 text-center space-y-6 max-w-md mx-auto">
-              <span className="text-7xl">🌟</span>
-              <h3 className="text-2xl font-black text-gray-800">Your collection is empty</h3>
-              <p className="text-gray-500 font-bold">Save words from the dictionary to keep track of tricky or favorite vocabulary!</p>
-              <button 
-                onClick={() => setActiveTab('dictionary')}
-                className="bg-[#1cb0f6] text-white p-4 px-10 rounded-2xl font-black shadow-[0_4px_0_#1899d6] active:translate-y-1 active:shadow-none transition-all"
-              >
-                GO TO DICTIONARY
-              </button>
-            </div>
-          )}
         </div>
       )}
     </div>
