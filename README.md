@@ -1,2 +1,2 @@
-# Linguist
-A language learning offline App.
+# PRAGMA
+Attain pragmatic fluency in languages using this offline App. 
