@@ -15,18 +15,18 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ onNavClick, activeView, xp, streak, hearts, proficiencyLevel, currentLanguage }) => {
   const navItems = [
-    { id: 'home', label: 'LEARN', icon: '🏠' },
-    { id: 'search', label: 'SEARCH', icon: '🔍' },
-    { id: 'vocabulary', label: 'VOCABULARY', icon: '📖' },
-    { id: 'my-lists', label: 'MY LISTS', icon: '📂' },
-    { id: 'ai-chats', label: 'AI CHATS', icon: '💬' },
-    { id: 'grammar', label: 'GRAMMAR', icon: '📝' },
-    { id: 'games', label: 'GAMES', icon: '🎮' },
-    { id: 'writing', label: 'WRITING', icon: '✏️' },
-    { id: 'culture', label: 'CULTURE', icon: '🌍' },
-    { id: 'notifications', label: 'REMINDERS', icon: '🔔' },
-    { id: 'profile', label: 'PROFILE', icon: '👤' },
-    { id: 'settings', label: 'SETTINGS', icon: '⚙️' },
+    { id: 'home', label: 'Learn', icon: '🏠' },
+    { id: 'search', label: 'Search', icon: '🔍' },
+    { id: 'vocabulary', label: 'Vocabulary', icon: '📖' },
+    { id: 'my-lists', label: 'My Lists', icon: '📂' },
+    { id: 'ai-chats', label: 'Ai Chats', icon: '💬' },
+    { id: 'grammar', label: 'Grammar', icon: '📝' },
+    { id: 'games', label: 'Games', icon: '🎮' },
+    { id: 'writing', label: 'Writing', icon: '✏️' },
+    { id: 'culture', label: 'Culture', icon: '🌍' },
+    { id: 'notifications', label: 'Reminders', icon: '🔔' },
+    { id: 'profile', label: 'Profile', icon: '👤' },
+    { id: 'settings', label: 'Settings', icon: '⚙️' },
   ];
 
   const goalProgress = xp % 100;
@@ -49,8 +49,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onNavClick, activeView, xp, streak, h
           </div>
           <div className="overflow-hidden flex-1">
             <div className="flex items-center space-x-1">
-               <span className="text-[9px] font-black text-blue-500 uppercase tracking-widest leading-none">Learning</span>
-               <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest leading-none truncate"> {currentLanguage}</span>
+               <span className="text-[10px] font-black text-[#1cb0f6] uppercase tracking-widest leading-none truncate">{currentLanguage}</span>
             </div>
             <p className="font-black text-gray-700 text-sm truncate mt-0.5">{currentLevelInfo.name}</p>
           </div>

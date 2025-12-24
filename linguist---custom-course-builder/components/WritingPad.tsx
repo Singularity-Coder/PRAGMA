@@ -126,8 +126,8 @@ const WritingPad: React.FC = () => {
 
   return (
     <div className="max-w-5xl mx-auto py-10 px-6 space-y-10 animate-in fade-in slide-in-from-bottom duration-500">
-      <div className="text-center space-y-2">
-        <h1 className="text-4xl font-black text-gray-800">Writing Studio</h1>
+      <div className="text-left space-y-2">
+        <h1 className="text-4xl font-black text-gray-800 tracking-tight">Writing Studio</h1>
         <p className="text-gray-500 font-bold">Pick a letter and practice your handwriting!</p>
       </div>
 

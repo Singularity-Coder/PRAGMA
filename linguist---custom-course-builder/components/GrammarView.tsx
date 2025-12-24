@@ -9,10 +9,10 @@ interface GrammarViewProps {
 const GrammarView: React.FC<GrammarViewProps> = ({ lessons = [] }) => {
   if (lessons.length === 0) {
     return (
-      <div className="max-w-4xl mx-auto py-20 px-6 text-center space-y-6">
+      <div className="max-w-4xl mx-auto py-20 px-6 text-left space-y-6">
         <span className="text-7xl">📚</span>
         <h1 className="text-4xl font-black text-gray-800">Grammar Lab</h1>
-        <p className="text-xl text-gray-500 font-bold max-w-lg mx-auto">
+        <p className="text-xl text-gray-500 font-bold max-w-lg mx-auto md:mx-0">
           No grammar lessons found in this course. Grammar modules are added by course creators.
         </p>
       </div>
@@ -21,9 +21,9 @@ const GrammarView: React.FC<GrammarViewProps> = ({ lessons = [] }) => {
 
   return (
     <div className="max-w-5xl mx-auto py-12 px-6 space-y-12 animate-in fade-in duration-500 pb-32">
-      <div className="text-center space-y-4">
+      <div className="text-left space-y-4">
         <h1 className="text-5xl font-black text-gray-800">Grammar Lab</h1>
-        <p className="text-xl text-gray-500 font-bold max-w-2xl mx-auto leading-relaxed">
+        <p className="text-xl text-gray-500 font-bold max-w-2xl leading-relaxed">
           The skeleton of language. Understand the rules to bend the words to your will.
         </p>
       </div>

@@ -12,7 +12,7 @@ interface SettingsViewProps {
   currentProficiency: ProficiencyLevel;
   onUpdateProficiency: (level: ProficiencyLevel) => void;
   currentCourseId: string;
-  autoOpenLanguages?: boolean;
+  onCreateCourse?: () => void;
 }
 
 const SettingsView: React.FC<SettingsViewProps> = ({ 
@@ -23,9 +23,9 @@ const SettingsView: React.FC<SettingsViewProps> = ({
   currentProficiency, 
   onUpdateProficiency,
   currentCourseId,
-  autoOpenLanguages = false
+  onCreateCourse
 }) => {
-  const [isLanguageModalOpen, setIsLanguageModalOpen] = useState(autoOpenLanguages);
+  const [isLanguageModalOpen, setIsLanguageModalOpen] = useState(false);
 
   const LanguageSelector = () => (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -109,6 +109,47 @@ const SettingsView: React.FC<SettingsViewProps> = ({
         )}
       </section>
 
+      {/* Course Builder/Upload Section */}
+      <section className="space-y-6">
+        <div className="flex items-center space-x-4">
+          <h2 className="text-xl font-black text-gray-700 uppercase tracking-widest">Course Management</h2>
+          <div className="h-1 flex-1 bg-gray-100 rounded-full"></div>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Create New Course Card */}
+          <div className="duo-card p-8 bg-gradient-to-br from-[#58cc02]/10 to-[#58cc02]/20 border-[#58cc02]/30 flex flex-col justify-between">
+             <div className="space-y-4">
+                <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-3xl shadow-sm border-2 border-[#58cc02]/20">🛠️</div>
+                <div>
+                   <h3 className="text-xl font-black text-[#46a302]">Build New Course</h3>
+                   <p className="text-sm text-[#46a302]/70 font-bold leading-relaxed">Design your own curriculum step-by-step with characters, words, and grammar.</p>
+                </div>
+             </div>
+             <button 
+              onClick={onCreateCourse}
+              className="mt-8 p-4 bg-[#58cc02] text-white rounded-2xl font-black shadow-[0_4px_0_#46a302] hover:scale-105 active:translate-y-1 active:shadow-none transition-all uppercase tracking-widest text-xs"
+             >
+                CREATE COURSE
+             </button>
+          </div>
+
+          {/* Import JSON Card */}
+          <div className="duo-card p-8 bg-white flex flex-col justify-between">
+             <div className="space-y-4">
+                <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center text-3xl shadow-sm border-2 border-gray-100">📂</div>
+                <div>
+                   <h3 className="text-xl font-black text-gray-700">Import JSON</h3>
+                   <p className="text-sm text-gray-400 font-bold leading-relaxed">Upload a .json file containing course data to instantly add it to your library.</p>
+                </div>
+             </div>
+             <div className="mt-8">
+                <UploadManager onCourseLoaded={onCourseLoaded} />
+             </div>
+          </div>
+        </div>
+      </section>
+
       {/* Proficiency Stage Selection */}
       <section className="space-y-6">
         <div className="flex items-center space-x-4">
@@ -126,7 +167,7 @@ const SettingsView: React.FC<SettingsViewProps> = ({
                   : 'border-gray-100 hover:border-gray-300 shadow-[0_4px_0_#e5e5e5]'
               }`}
             >
-              <div className="w-20 h-20 rounded-2xl overflow-hidden border-2 border-white shadow-md">
+              <div className="w-20 h-20 rounded-2xl overflow-hidden border-2 border-white shadow-md bg-white">
                 <img src={info.imageUrl} className="w-full h-full object-cover" alt={info.name} />
               </div>
               <div>
@@ -139,17 +180,6 @@ const SettingsView: React.FC<SettingsViewProps> = ({
               </div>
             </button>
           ))}
-        </div>
-      </section>
-
-      {/* Course Management Section */}
-      <section className="space-y-6">
-        <div className="flex items-center space-x-4">
-          <h2 className="text-xl font-black text-gray-700 uppercase tracking-widest">Upload New Material</h2>
-          <div className="h-1 flex-1 bg-gray-100 rounded-full"></div>
-        </div>
-        <div className="bg-white rounded-3xl overflow-hidden">
-          <UploadManager onCourseLoaded={onCourseLoaded} />
         </div>
       </section>
 

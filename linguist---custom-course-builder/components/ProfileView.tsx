@@ -10,7 +10,6 @@ const ProfileView: React.FC<ProfileViewProps> = ({ stats }) => {
   return (
     <div className="max-w-4xl mx-auto py-12 px-6 space-y-12 animate-in fade-in duration-500 pb-32">
       <div className="flex flex-col md:flex-row items-center gap-8 border-b-2 border-gray-100 pb-12">
-        <div className="w-48 h-48 bg-gray-50 rounded-full flex items-center justify-center text-8xl border-4 border-white shadow-xl">🦉</div>
         <div className="flex-1 text-center md:text-left space-y-4">
           <h1 className="text-5xl font-black text-gray-800 tracking-tight">Learner Profile</h1>
           <div className="flex flex-wrap justify-center md:justify-start gap-3">
@@ -22,6 +21,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({ stats }) => {
              </span>
           </div>
         </div>
+        <div className="w-48 h-48 bg-gray-50 rounded-full flex items-center justify-center text-8xl border-4 border-white shadow-xl order-first md:order-last">🦉</div>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">

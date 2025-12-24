@@ -130,3 +130,5 @@ export interface UserStats {
   accuracy: number; // percentage
   perfectLessons: number;
 }
+
+export type ViewType = 'home' | 'settings' | 'profile' | 'vocabulary' | 'review' | 'writing' | 'culture' | 'grammar' | 'games' | 'search' | 'notifications' | 'my-lists' | 'ai-chats' | 'course-builder';

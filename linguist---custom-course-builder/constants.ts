@@ -25,37 +25,37 @@ export const PROFICIENCY_LEVELS: LevelInfo[] = [
     level: 1,
     name: 'Beginner',
     description: 'Recognize words',
-    imageUrl: 'global/1_beginner.png'
+    imageUrl: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=200&auto=format&fit=crop'
   },
   {
     level: 2,
     name: 'Survival',
     description: 'Get by',
-    imageUrl: 'global/2_survival.png'
+    imageUrl: 'https://images.unsplash.com/photo-1454165833767-027ffea9e78b?q=80&w=200&auto=format&fit=crop'
   },
   {
     level: 3,
     name: 'Functional',
     description: 'Work/study',
-    imageUrl: 'global/3_functional.png'
+    imageUrl: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=200&auto=format&fit=crop'
   },
   {
     level: 4,
     name: 'Professional',
     description: 'Argue, explain',
-    imageUrl: 'global/4_professional.png'
+    imageUrl: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=200&auto=format&fit=crop'
   },
   {
     level: 5,
     name: 'Academic',
     description: 'Analyze & write',
-    imageUrl: 'global/5_academic.png'
+    imageUrl: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=200&auto=format&fit=crop'
   },
   {
     level: 6,
     name: 'Near-native',
     description: 'Think in language',
-    imageUrl: 'global/6_near-native.png'
+    imageUrl: 'https://images.unsplash.com/photo-1544652478-6653e09f18a2?q=80&w=200&auto=format&fit=crop'
   }
 ];
 

@@ -16,12 +16,12 @@ import NotificationsView from './components/NotificationsView';
 import ProfileView from './components/ProfileView';
 import MyListsView from './components/MyListsView';
 import AIChatsView from './components/AIChatsView';
-import { CourseData, Lesson, UserStats, Exercise, ProficiencyLevel, NotificationSettings } from './types';
-import { DUMMY_COURSE } from './constants';
+import CourseBuilder from './components/CourseBuilder';
+import { CourseData, Lesson, UserStats, Exercise, ProficiencyLevel, NotificationSettings, ViewType } from './types';
+import { DUMMY_COURSE, PROFICIENCY_LEVELS } from './constants';
 
 const App: React.FC = () => {
-  const [activeView, setActiveView] = useState<'home' | 'settings' | 'profile' | 'vocabulary' | 'review' | 'writing' | 'culture' | 'grammar' | 'games' | 'search' | 'notifications' | 'my-lists' | 'ai-chats'>('home');
-  const [autoOpenLanguages, setAutoOpenLanguages] = useState(false);
+  const [activeView, setActiveView] = useState<ViewType>('home');
   const [availableCourses, setAvailableCourses] = useState<CourseData[]>(() => {
     const saved = localStorage.getItem('linguist_courses_v2');
     return saved ? JSON.parse(saved) : [DUMMY_COURSE];
@@ -105,12 +105,7 @@ const App: React.FC = () => {
     setActiveView('home');
   };
 
-  const handleSidebarNav = (view: any) => {
-    if (view === 'settings') {
-      setAutoOpenLanguages(true);
-    } else {
-      setAutoOpenLanguages(false);
-    }
+  const handleSidebarNav = (view: ViewType) => {
     setActiveView(view);
   };
 
@@ -203,6 +198,7 @@ const App: React.FC = () => {
   };
 
   const filteredUnits = course.units.filter(u => !u.level || u.level === stats.proficiencyLevel);
+  const currentLevelName = PROFICIENCY_LEVELS.find(l => l.level === stats.proficiencyLevel)?.name || 'Beginner';
 
   return (
     <div className="flex bg-white min-h-screen font-['Nunito'] select-none">
@@ -223,10 +219,9 @@ const App: React.FC = () => {
 
         {activeView === 'home' && (
           <div className="pb-24 max-w-4xl mx-auto px-4">
-             <div className="mt-8 mb-4 p-4 text-center">
-                <h2 className="text-xl font-black text-gray-400 uppercase tracking-widest">
-                  Level Stage {stats.proficiencyLevel}
-                </h2>
+             <div className="mt-12 mb-8 px-4 text-left">
+                <h1 className="text-4xl font-black text-gray-800 tracking-tight">{course.language}</h1>
+                <p className="text-lg text-gray-500 font-bold mt-1">Level: {currentLevelName}</p>
              </div>
              {stats.failedExercises.length > 0 && (
                <div className="mt-8 p-6 bg-purple-100 rounded-2xl border-2 border-purple-200 flex items-center justify-between">
@@ -260,6 +255,7 @@ const App: React.FC = () => {
         {activeView === 'my-lists' && <MyListsView dictionary={course.dictionary} savedWordIds={stats.savedWordIds[course.language] || []} onToggleSaveWord={handleToggleSaveWord} />}
         {activeView === 'profile' && <ProfileView stats={stats} />}
         {activeView === 'ai-chats' && <AIChatsView currentLanguage={course.language} />}
+        {activeView === 'course-builder' && <CourseBuilder onCourseSaved={(c) => handleCourseLoaded(c, new Map())} onCancel={() => setActiveView('settings')} />}
         
         {activeView === 'settings' && (
           <SettingsView 
@@ -270,7 +266,7 @@ const App: React.FC = () => {
             currentProficiency={stats.proficiencyLevel}
             onUpdateProficiency={handleUpdateProficiency}
             currentCourseId={stats.currentCourseId}
-            autoOpenLanguages={autoOpenLanguages}
+            onCreateCourse={() => setActiveView('course-builder')}
           />
         )}
         {activeView === 'review' && <ReviewMode exercises={stats.failedExercises} onClose={() => setActiveView('home')} />}
