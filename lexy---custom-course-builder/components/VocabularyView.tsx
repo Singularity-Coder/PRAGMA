@@ -31,11 +31,11 @@ const VocabularyView: React.FC<VocabularyViewProps> = ({ dictionary = [], savedW
   const renderWordCard = (entry: DictionaryEntry) => {
     const isSaved = savedWordIds.includes(entry.id);
     return (
-      <div key={entry.id} className="duo-card p-6 bg-white hover:border-[#1cb0f6] transition-all flex flex-col group">
+      <div key={entry.id} className="duo-card p-6 bg-white hover:border-[#ad46ff] transition-all flex flex-col group">
         <div className="flex justify-between items-start mb-4">
           <div className="space-y-1">
             <h3 className="text-2xl font-black text-gray-800">{entry.word}</h3>
-            <p className="text-lg font-bold text-[#1cb0f6]">{entry.translation}</p>
+            <p className="text-lg font-bold text-[#ad46ff]">{entry.translation}</p>
           </div>
           <div className="flex space-x-2">
             <button 
@@ -67,7 +67,7 @@ const VocabularyView: React.FC<VocabularyViewProps> = ({ dictionary = [], savedW
   const LetterButton: React.FC<{ letter: string; type: 'vowel' | 'consonant' }> = ({ letter, type }) => {
     const activeColors = type === 'vowel' 
       ? 'hover:border-[#ffc800] hover:bg-[#fff9e6] group-hover:text-[#ffc800]' 
-      : 'hover:border-[#1cb0f6] hover:bg-[#ddf4ff] group-hover:text-[#1cb0f6]';
+      : 'hover:border-[#ad46ff] hover:bg-purple-50 group-hover:text-[#ad46ff]';
     return (
       <button
         onClick={() => speak(letter)}
@@ -85,8 +85,8 @@ const VocabularyView: React.FC<VocabularyViewProps> = ({ dictionary = [], savedW
     <div className="max-w-6xl mx-auto py-10 px-6 space-y-10 animate-in fade-in duration-500 pb-32">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b-2 border-gray-100 pb-6">
         <div className="space-y-2">
-          <h1 className="text-4xl font-black text-gray-800">Vocabulary</h1>
-          <p className="text-gray-500 font-bold">Build your repertoire word by word.</p>
+          <h1 className="text-4xl font-black text-gray-800 tracking-tight">Vocabulary</h1>
+          <p className="text-lg text-gray-500 font-bold mt-1">Build your repertoire word by word.</p>
         </div>
         
         <div className="flex p-1 bg-gray-100 rounded-2xl">
@@ -99,7 +99,7 @@ const VocabularyView: React.FC<VocabularyViewProps> = ({ dictionary = [], savedW
               onClick={() => setActiveTab(tab.id as any)}
               className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-black text-xs uppercase transition-all ${
                 activeTab === tab.id 
-                  ? 'bg-white text-[#1cb0f6] shadow-sm' 
+                  ? 'bg-white text-[#ad46ff] shadow-sm' 
                   : 'text-gray-400 hover:text-gray-600'
               }`}
             >
@@ -122,7 +122,7 @@ const VocabularyView: React.FC<VocabularyViewProps> = ({ dictionary = [], savedW
           </section>
           <section className="space-y-6">
             <h2 className="text-2xl font-black text-gray-700 uppercase tracking-widest flex items-center gap-3">
-              <span className="w-2 h-8 bg-[#1cb0f6] rounded-full" /> Consonants
+              <span className="w-2 h-8 bg-[#ad46ff] rounded-full" /> Consonants
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
               {consonants.map((letter) => <LetterButton key={letter} letter={letter} type="consonant" />)}
@@ -139,7 +139,7 @@ const VocabularyView: React.FC<VocabularyViewProps> = ({ dictionary = [], savedW
               placeholder="Search words..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full p-5 pl-14 duo-card text-lg font-bold outline-none focus:border-[#1cb0f6] shadow-inner bg-gray-50"
+              className="w-full p-5 pl-14 duo-card text-lg font-bold outline-none focus:border-[#ad46ff] shadow-inner bg-gray-50"
             />
             <span className="absolute left-6 top-1/2 -translate-y-1/2 text-2xl text-gray-400">🔍</span>
           </div>

@@ -47,7 +47,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       >
         {/* Header Area */}
         <div className="flex items-center justify-between p-6 pb-2">
-          <div className="text-4xl font-black text-purple-500 select-none uppercase">
+          <div className="text-4xl font-black text-[#ad46ff] select-none uppercase">
             LEXY
           </div>
           {/* Mobile-only close button */}
@@ -75,7 +75,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               </div>
               <div className="overflow-hidden flex-1">
                 <div className="flex items-center space-x-1">
-                   <span className="text-[11px] font-black text-[#1cb0f6] uppercase tracking-[0.15em] leading-none truncate">{currentLanguage}</span>
+                   <span className="text-[11px] font-black text-[#ad46ff] uppercase tracking-[0.15em] leading-none truncate">{currentLanguage}</span>
                 </div>
                 <p className="font-black text-gray-700 text-base truncate mt-0.5">{currentLevelInfo.name}</p>
               </div>
@@ -84,7 +84,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             {/* Unified Stats Box */}
             <div className="duo-card overflow-hidden border-gray-100 bg-white shadow-sm">
               {/* Daily Goal Row */}
-              <div className="p-3 px-4 bg-blue-50 border-b-2 border-gray-100 font-black text-blue-600 transition-colors">
+              <div className="p-3 px-4 bg-purple-50 border-b-2 border-gray-100 font-black text-purple-600 transition-colors">
                 <div className="flex justify-between items-center mb-1.5">
                   <div className="flex items-center space-x-2">
                     <span className="text-base">🎯</span>
@@ -92,9 +92,9 @@ const Sidebar: React.FC<SidebarProps> = ({
                   </div>
                   <span className="text-[10px] leading-none">{goalProgress}%</span>
                 </div>
-                <div className="w-full h-1.5 bg-blue-100/50 rounded-full overflow-hidden">
+                <div className="w-full h-1.5 bg-purple-100/50 rounded-full overflow-hidden">
                    <div 
-                    className="h-full bg-blue-500 rounded-full transition-all duration-500" 
+                    className="h-full bg-[#ad46ff] rounded-full transition-all duration-500" 
                     style={{ width: `${goalProgress}%` }} 
                    />
                 </div>
@@ -134,7 +134,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                 }}
                 className={`w-full flex items-center p-3.5 px-4 rounded-2xl font-bold transition-all transform active:scale-95 space-x-4 border-2 ${
                   activeView === item.id 
-                    ? 'bg-[#ddf4ff] text-[#1cb0f6] border-[#84d8ff]' 
+                    ? 'bg-purple-50 text-[#ad46ff] border-purple-100' 
                     : 'text-gray-500 border-transparent hover:bg-gray-100'
                 }`}
               >

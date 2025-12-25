@@ -47,7 +47,7 @@ const CourseBuilder: React.FC<CourseBuilderProps> = ({ onCourseSaved, onCancel }
         {
           id: 'unit-init',
           title: 'Introduction',
-          color: 'bg-[#58cc02]',
+          color: 'bg-[#ad46ff]',
           lessons: [
             { id: 'l1', title: 'Hello', description: 'Basic greetings', status: 'available', exercises: [] }
           ]
@@ -77,7 +77,7 @@ const CourseBuilder: React.FC<CourseBuilderProps> = ({ onCourseSaved, onCancel }
         <div className="w-full md:w-64 space-y-8">
           <button 
             onClick={onCancel} 
-            className="text-gray-400 font-black hover:text-gray-600 transition-colors uppercase tracking-widest text-xs flex items-center gap-2"
+            className="text-gray-400 font-black hover:text-[#ad46ff] transition-colors uppercase tracking-widest text-xs flex items-center gap-2"
           >
             ← CANCEL
           </button>
@@ -91,7 +91,7 @@ const CourseBuilder: React.FC<CourseBuilderProps> = ({ onCourseSaved, onCancel }
                   onClick={() => setStep(idx)}
                   className={`w-full flex items-center p-4 rounded-2xl font-black text-sm transition-all transform active:scale-95 space-x-4 border-2 ${
                     step === idx 
-                      ? 'bg-[#ddf4ff] text-[#1cb0f6] border-[#84d8ff]' 
+                      ? 'bg-purple-50 text-[#ad46ff] border-purple-200' 
                       : 'text-gray-400 border-transparent hover:bg-gray-50'
                   }`}
                 >
@@ -105,7 +105,7 @@ const CourseBuilder: React.FC<CourseBuilderProps> = ({ onCourseSaved, onCancel }
           <div className="pt-4 border-t-2 border-gray-100 space-y-3">
              <button 
               onClick={handleFinish}
-              className="w-full p-4 bg-[#58cc02] text-white rounded-2xl font-black shadow-[0_4px_0_#46a302] hover:bg-[#46a302] active:translate-y-1 active:shadow-none transition-all uppercase tracking-widest text-[10px]"
+              className="w-full p-4 bg-[#ad46ff] text-white rounded-2xl font-black shadow-[0_4px_0_#8439a3] hover:bg-[#8439a3] active:translate-y-1 active:shadow-none transition-all uppercase tracking-widest text-[10px]"
              >
                 FINISH CREATION
              </button>
@@ -138,7 +138,7 @@ const CourseBuilder: React.FC<CourseBuilderProps> = ({ onCourseSaved, onCancel }
                     <input 
                       type="text" 
                       placeholder="e.g. English"
-                      className="w-full p-6 rounded-2xl border-2 border-gray-200 focus:border-[#1cb0f6] font-black outline-none bg-gray-50 text-gray-800 placeholder-gray-300 text-xl"
+                      className="w-full p-6 rounded-2xl border-2 border-gray-200 focus:border-[#ad46ff] font-black outline-none bg-gray-50 text-gray-800 placeholder-gray-300 text-xl"
                       value={course.language}
                       onChange={e => updateCourse('language', e.target.value)}
                     />
@@ -148,7 +148,7 @@ const CourseBuilder: React.FC<CourseBuilderProps> = ({ onCourseSaved, onCancel }
                     <input 
                       type="text" 
                       placeholder="e.g. English Mastery"
-                      className="w-full p-6 rounded-2xl border-2 border-gray-200 focus:border-[#1cb0f6] font-black outline-none bg-gray-50 text-gray-800 placeholder-gray-300 text-xl"
+                      className="w-full p-6 rounded-2xl border-2 border-gray-200 focus:border-[#ad46ff] font-black outline-none bg-gray-50 text-gray-800 placeholder-gray-300 text-xl"
                       value={course.courseTitle}
                       onChange={e => updateCourse('courseTitle', e.target.value)}
                     />
@@ -222,14 +222,14 @@ const CourseBuilder: React.FC<CourseBuilderProps> = ({ onCourseSaved, onCancel }
             {step === steps.length - 1 ? (
               <button 
                 onClick={handleFinish}
-                className="p-4 px-12 bg-[#58cc02] text-white rounded-2xl font-black shadow-[0_4px_0_#46a302] hover:scale-105 active:translate-y-1 active:shadow-none transition-all uppercase tracking-widest text-xs"
+                className="p-4 px-12 bg-[#ad46ff] text-white rounded-2xl font-black shadow-[0_4px_0_#8439a3] hover:scale-105 active:translate-y-1 active:shadow-none transition-all uppercase tracking-widest text-xs"
               >
                 SYNC & FINISH
               </button>
             ) : (
               <button 
                 onClick={nextStep}
-                className="p-4 px-16 bg-[#1cb0f6] text-white rounded-2xl font-black shadow-[0_4px_0_#1899d6] hover:scale-105 active:translate-y-1 active:shadow-none transition-all uppercase tracking-widest text-sm"
+                className="p-4 px-16 bg-purple-50 text-[#ad46ff] rounded-2xl font-black shadow-[0_4px_0_#c4b5fd] hover:scale-105 active:translate-y-1 active:shadow-none transition-all uppercase tracking-widest text-sm"
               >
                 CONTINUE
               </button>
@@ -260,20 +260,20 @@ const DictionaryBuilder = ({ items, onUpdate }: { items: DictionaryEntry[], onUp
         <div className="grid grid-cols-2 gap-4">
           <input 
             placeholder="Word" 
-            className="p-3 rounded-xl border-2 border-gray-200 font-bold outline-none focus:border-blue-400 bg-white text-gray-800" 
+            className="p-3 rounded-xl border-2 border-gray-200 font-bold outline-none focus:border-[#ad46ff] bg-white text-gray-800" 
             value={newEntry.word}
             onChange={e => setNewEntry(prev => ({...prev, word: e.target.value}))}
           />
           <input 
             placeholder="Translation" 
-            className="p-3 rounded-xl border-2 border-gray-200 font-bold outline-none focus:border-blue-400 bg-white text-gray-800" 
+            className="p-3 rounded-xl border-2 border-gray-200 font-bold outline-none focus:border-[#ad46ff] bg-white text-gray-800" 
             value={newEntry.translation}
             onChange={e => setNewEntry(prev => ({...prev, translation: e.target.value}))}
           />
         </div>
         <textarea 
           placeholder="Definition (Optional)" 
-          className="w-full p-3 rounded-xl border-2 border-gray-200 font-bold outline-none focus:border-blue-400 h-20 bg-white text-gray-800" 
+          className="w-full p-3 rounded-xl border-2 border-gray-200 font-bold outline-none focus:border-[#ad46ff] h-20 bg-white text-gray-800" 
           value={newEntry.definition}
           onChange={e => setNewEntry(prev => ({...prev, definition: e.target.value}))}
         />
@@ -293,7 +293,7 @@ const DictionaryBuilder = ({ items, onUpdate }: { items: DictionaryEntry[], onUp
           <div key={item.id} className="p-3 bg-white border-2 border-gray-100 rounded-xl flex items-center justify-between group">
             <div className="flex gap-4 items-center">
               <span className="font-black text-gray-800">{item.word}</span>
-              <span className="text-blue-500 font-bold">→ {item.translation}</span>
+              <span className="text-[#ad46ff] font-bold">→ {item.translation}</span>
             </div>
             <button onClick={() => remove(item.id)} className="text-red-300 hover:text-red-500 transition-colors">✕</button>
           </div>
@@ -319,13 +319,13 @@ const GrammarBuilder = ({ items, onUpdate }: { items: GrammarLesson[], onUpdate:
       <div className="bg-gray-50 p-6 rounded-3xl space-y-4">
         <input 
           placeholder="Rule Title (e.g. Present Tense)" 
-          className="w-full p-3 rounded-xl border-2 border-gray-200 font-bold outline-none focus:border-purple-400 bg-white text-gray-800" 
+          className="w-full p-3 rounded-xl border-2 border-gray-200 font-bold outline-none focus:border-[#ad46ff] bg-white text-gray-800" 
           value={newEntry.title}
           onChange={e => setNewEntry(prev => ({...prev, title: e.target.value}))}
         />
         <textarea 
           placeholder="Explanation of the rule..." 
-          className="w-full p-3 rounded-xl border-2 border-gray-100 font-bold outline-none focus:border-purple-400 h-28 bg-white text-gray-800" 
+          className="w-full p-3 rounded-xl border-2 border-gray-100 font-bold outline-none focus:border-[#ad46ff] h-28 bg-white text-gray-800" 
           value={newEntry.content}
           onChange={e => setNewEntry(prev => ({...prev, content: e.target.value}))}
         />
@@ -380,12 +380,12 @@ const CultureBuilder = ({ items, onUpdate }: { items: CultureItem[], onUpdate: (
         <div className="grid grid-cols-2 gap-4">
           <input 
             placeholder="Item Title" 
-            className="p-3 rounded-xl border-2 border-gray-200 font-bold outline-none focus:border-orange-400 bg-white text-gray-800" 
+            className="p-3 rounded-xl border-2 border-gray-200 font-bold outline-none focus:border-[#ad46ff] bg-white text-gray-800" 
             value={newEntry.title}
             onChange={e => setNewEntry(prev => ({...prev, title: e.target.value}))}
           />
           <select 
-            className="p-3 rounded-xl border-2 border-gray-100 font-bold outline-none focus:border-orange-400 bg-white text-gray-800"
+            className="p-3 rounded-xl border-2 border-gray-100 font-bold outline-none focus:border-[#ad46ff] bg-white text-gray-800"
             value={newEntry.category}
             onChange={e => setNewEntry(prev => ({...prev, category: e.target.value as any}))}
           >
@@ -394,13 +394,13 @@ const CultureBuilder = ({ items, onUpdate }: { items: CultureItem[], onUpdate: (
         </div>
         <input 
           placeholder="YouTube URL or Link" 
-          className="w-full p-3 rounded-xl border-2 border-gray-200 font-bold outline-none focus:border-orange-400 bg-white text-gray-800" 
+          className="w-full p-3 rounded-xl border-2 border-gray-200 font-bold outline-none focus:border-[#ad46ff] bg-white text-gray-800" 
           value={newEntry.mediaUrl}
           onChange={e => setNewEntry(prev => ({...prev, mediaUrl: e.target.value}))}
         />
         <textarea 
           placeholder="Brief description or fun fact..." 
-          className="w-full p-3 rounded-xl border-2 border-gray-200 font-bold outline-none focus:border-orange-400 h-20 bg-white text-gray-800" 
+          className="w-full p-3 rounded-xl border-2 border-gray-200 font-bold outline-none focus:border-[#ad46ff] h-20 bg-white text-gray-800" 
           value={newEntry.description}
           onChange={e => setNewEntry(prev => ({...prev, description: e.target.value}))}
         />
@@ -412,7 +412,7 @@ const CultureBuilder = ({ items, onUpdate }: { items: CultureItem[], onUpdate: (
           <div key={item.id} className="p-3 bg-white border-2 border-gray-100 rounded-xl flex items-center justify-between">
             <div className="flex flex-col">
               <span className="font-black text-gray-700">{item.title}</span>
-              <span className="text-[10px] font-black text-orange-400 uppercase tracking-widest">{item.category}</span>
+              <span className="text-[10px] font-black text-[#ad46ff] uppercase tracking-widest">{item.category}</span>
             </div>
             <button onClick={() => remove(item.id)} className="text-red-300 hover:text-red-500">✕</button>
           </div>

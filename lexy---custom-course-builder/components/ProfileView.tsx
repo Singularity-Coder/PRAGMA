@@ -11,7 +11,7 @@ const ProfileView: React.FC<ProfileViewProps> = ({ stats }) => {
     <div className="max-w-4xl mx-auto py-12 px-6 space-y-12 animate-in fade-in duration-500 pb-32">
       <div className="flex flex-col md:flex-row items-center gap-8 border-b-2 border-gray-100 pb-12">
         <div className="flex-1 text-center md:text-left space-y-4">
-          <h1 className="text-5xl font-black text-gray-800 tracking-tight">Learner Profile</h1>
+          <h1 className="text-4xl font-black text-gray-800 tracking-tight">Learner Profile</h1>
           <div className="flex flex-wrap justify-center md:justify-start gap-3">
              <span className="px-4 py-2 bg-blue-50 text-[#1cb0f6] rounded-full font-black text-xs uppercase tracking-widest border border-blue-100">
                Rank: Silver League

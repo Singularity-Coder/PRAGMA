@@ -33,8 +33,8 @@ const MyListsView: React.FC<MyListsViewProps> = ({ dictionary = [], savedWordIds
     <div className="max-w-6xl mx-auto py-12 px-6 space-y-12 animate-in fade-in duration-500 pb-32">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div className="space-y-2">
-          <h1 className="text-5xl font-black text-gray-800 tracking-tight">My Collections</h1>
-          <p className="text-lg text-gray-500 font-bold max-w-2xl">
+          <h1 className="text-4xl font-black text-gray-800 tracking-tight">My Collections</h1>
+          <p className="text-lg text-gray-500 font-bold mt-1 max-w-2xl">
             Everything you've bookmarked while exploring the course.
           </p>
         </div>
@@ -50,7 +50,7 @@ const MyListsView: React.FC<MyListsViewProps> = ({ dictionary = [], savedWordIds
               onClick={() => setActiveFilter(tab.id as any)}
               className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-black text-xs uppercase transition-all ${
                 activeFilter === tab.id 
-                  ? 'bg-white text-blue-500 shadow-sm' 
+                  ? 'bg-white text-[#ad46ff] shadow-sm' 
                   : 'text-gray-400 hover:text-gray-600'
               }`}
             >
@@ -75,16 +75,16 @@ const MyListsView: React.FC<MyListsViewProps> = ({ dictionary = [], savedWordIds
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredItems.map(item => (
-            <div key={item.id} className="duo-card p-6 bg-white hover:border-blue-400 transition-all flex flex-col group animate-in slide-in-from-bottom duration-300">
+            <div key={item.id} className="duo-card p-6 bg-white hover:border-purple-400 transition-all flex flex-col group animate-in slide-in-from-bottom duration-300">
               <div className="flex justify-between items-start mb-4">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
                     <h3 className="text-2xl font-black text-gray-800">{item.word}</h3>
-                    <span className={`text-[8px] font-black px-1.5 py-0.5 rounded uppercase ${item.isPhrase ? 'bg-purple-100 text-purple-600' : 'bg-blue-100 text-blue-600'}`}>
+                    <span className={`text-[8px] font-black px-1.5 py-0.5 rounded uppercase ${item.isPhrase ? 'bg-purple-100 text-purple-600' : 'bg-purple-100 text-[#ad46ff]'}`}>
                       {item.isPhrase ? 'Phrase' : 'Word'}
                     </span>
                   </div>
-                  <p className="text-lg font-bold text-blue-500">{item.translation}</p>
+                  <p className="text-lg font-bold text-[#ad46ff]">{item.translation}</p>
                 </div>
                 <div className="flex space-x-2">
                   <button 

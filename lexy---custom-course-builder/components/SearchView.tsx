@@ -34,7 +34,7 @@ const SearchView: React.FC<SearchViewProps> = ({ course, onToggleSaveWord, saved
           if (ctx) {
             ctx.lineCap = 'round';
             ctx.lineJoin = 'round';
-            ctx.strokeStyle = '#1cb0f6';
+            ctx.strokeStyle = '#ad46ff';
             ctx.lineWidth = 12;
           }
         }
@@ -122,16 +122,9 @@ const SearchView: React.FC<SearchViewProps> = ({ course, onToggleSaveWord, saved
   };
 
   // Approximate recognition: This is a placeholder for actual complex shape matching.
-  // It simply maps common gestures to letters for the UI demo.
   const recognizeCharacter = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    
-    // Heuristic placeholder: In a real app, you'd compare the drawn image/paths to templates.
-    // For this prompt, we simulate "Approximate Character Match" by picking a letter 
-    // that matches the intended drawing (we'll just use a button or simple mock).
-    // Let's actually provide a "Guess" list based on the drawing.
-    // Since we can't use LLM for handwriting, we'll let user select if unsure.
     const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G']; // Mock common results
     setSearchTerm(letters[Math.floor(Math.random() * letters.length)]);
   };
@@ -166,8 +159,8 @@ const SearchView: React.FC<SearchViewProps> = ({ course, onToggleSaveWord, saved
     <div className="max-w-4xl mx-auto py-10 px-6 space-y-10 animate-in fade-in duration-500 pb-32">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div className="space-y-2">
-          <h1 className="text-4xl font-black text-gray-800">Explore Course</h1>
-          <p className="text-gray-500 font-bold">Discover language content through three powerful ways.</p>
+          <h1 className="text-4xl font-black text-gray-800 tracking-tight">Explore Course</h1>
+          <p className="text-lg text-gray-500 font-bold mt-1">Discover language content through three powerful ways.</p>
         </div>
         
         <div className="flex p-1 bg-gray-100 rounded-2xl shrink-0">
@@ -185,7 +178,7 @@ const SearchView: React.FC<SearchViewProps> = ({ course, onToggleSaveWord, saved
               }}
               className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-black text-xs uppercase transition-all ${
                 searchMode === mode.id 
-                  ? 'bg-white text-[#1cb0f6] shadow-sm' 
+                  ? 'bg-white text-[#ad46ff] shadow-sm' 
                   : 'text-gray-400 hover:text-gray-600'
               }`}
             >
@@ -205,7 +198,7 @@ const SearchView: React.FC<SearchViewProps> = ({ course, onToggleSaveWord, saved
               placeholder="Type to search..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full p-6 pl-16 duo-card text-xl font-bold outline-none focus:border-[#1cb0f6] shadow-inner bg-gray-50 transition-all"
+              className="w-full p-6 pl-16 duo-card text-xl font-bold outline-none focus:border-[#ad46ff] shadow-inner bg-gray-50 transition-all"
             />
             <span className="absolute left-6 top-1/2 -translate-y-1/2 text-3xl text-gray-400">🔍</span>
           </>
@@ -221,17 +214,17 @@ const SearchView: React.FC<SearchViewProps> = ({ course, onToggleSaveWord, saved
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleSemanticSearch(searchTerm)}
-                  className="w-full p-6 pl-16 duo-card text-xl font-bold outline-none focus:border-[#1cb0f6] shadow-inner bg-gray-50 transition-all"
+                  className="w-full p-6 pl-16 duo-card text-xl font-bold outline-none focus:border-[#ad46ff] shadow-inner bg-gray-50 transition-all"
                 />
                 <button 
                   onClick={() => handleSemanticSearch(searchTerm)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#1cb0f6] text-white px-6 py-2 rounded-xl font-black text-xs uppercase tracking-widest shadow-[0_3px_0_#1899d6]"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#ad46ff] text-white px-6 py-2 rounded-xl font-black text-xs uppercase tracking-widest shadow-[0_3px_0_#8439a3]"
                 >
                   SEARCH
                 </button>
                 <span className="absolute left-6 top-1/2 -translate-y-1/2 text-3xl text-gray-400">🧠</span>
              </div>
-             {isSearching && <p className="text-center text-xs font-black text-[#1cb0f6] animate-pulse">Consulting Gemini AI...</p>}
+             {isSearching && <p className="text-center text-xs font-black text-[#ad46ff] animate-pulse">Consulting Gemini AI...</p>}
           </div>
         )}
 
@@ -257,7 +250,7 @@ const SearchView: React.FC<SearchViewProps> = ({ course, onToggleSaveWord, saved
                <button onClick={clearCanvas} className="p-3 px-6 bg-gray-50 text-gray-400 font-black rounded-xl text-xs hover:bg-gray-100 uppercase tracking-widest">Clear</button>
                <div className="flex gap-2">
                  {['A','B','C','D','E'].map(l => (
-                   <button key={l} onClick={() => setSearchTerm(l)} className={`w-10 h-10 rounded-xl font-black transition-all ${searchTerm === l ? 'bg-[#1cb0f6] text-white' : 'bg-gray-50 text-gray-400 hover:bg-gray-100'}`}>{l}</button>
+                   <button key={l} onClick={() => setSearchTerm(l)} className={`w-10 h-10 rounded-xl font-black transition-all ${searchTerm === l ? 'bg-[#ad46ff] text-white' : 'bg-gray-50 text-gray-400 hover:bg-gray-100'}`}>{l}</button>
                  ))}
                </div>
             </div>
@@ -280,14 +273,14 @@ const SearchView: React.FC<SearchViewProps> = ({ course, onToggleSaveWord, saved
           {results.vocab.length > 0 && (
             <section className="space-y-6">
               <h2 className="text-xs font-black text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-blue-400" /> Vocabulary ({results.vocab.length})
+                <span className="w-2 h-2 rounded-full bg-purple-400" /> Vocabulary ({results.vocab.length})
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {results.vocab.map(entry => (
-                  <div key={entry.id} className="duo-card p-5 bg-white flex items-center justify-between group hover:border-blue-400 transition-all animate-in slide-in-from-bottom duration-300">
+                  <div key={entry.id} className="duo-card p-5 bg-white flex items-center justify-between group hover:border-purple-400 transition-all animate-in slide-in-from-bottom duration-300">
                     <div className="flex-1">
                       <h3 className="text-xl font-black text-gray-800">{entry.word}</h3>
-                      <p className="text-blue-500 font-bold">{entry.translation}</p>
+                      <p className="text-[#ad46ff] font-bold">{entry.translation}</p>
                     </div>
                     <div className="flex gap-2">
                        <button onClick={() => speak(entry.word)} className="w-10 h-10 bg-gray-50 rounded-xl flex items-center justify-center hover:bg-gray-100">🔊</button>

@@ -47,7 +47,7 @@ const SettingsView: React.FC<SettingsViewProps> = ({
           }}
           className={`p-5 rounded-2xl flex items-center space-x-4 border-2 transition-all group ${
             currentCourseId === course.id 
-              ? 'bg-blue-50 border-[#1cb0f6] shadow-[0_4px_0_#1cb0f6]' 
+              ? 'bg-purple-50 border-[#ad46ff] shadow-[0_4px_0_#ad46ff]' 
               : 'bg-white border-gray-100 hover:border-gray-300 shadow-[0_4px_0_#e5e5e5]'
           }`}
         >
@@ -59,7 +59,7 @@ const SettingsView: React.FC<SettingsViewProps> = ({
             <p className="text-[10px] font-black text-gray-400 uppercase">{course.courseTitle}</p>
           </div>
           {currentCourseId === course.id && (
-            <div className="ml-auto text-[#1cb0f6] font-black">✓</div>
+            <div className="ml-auto text-[#ad46ff] font-black">✓</div>
           )}
         </button>
       ))}
@@ -76,8 +76,8 @@ const SettingsView: React.FC<SettingsViewProps> = ({
   return (
     <div className="max-w-4xl mx-auto py-12 px-6 space-y-12 animate-in fade-in slide-in-from-bottom duration-500 pb-32">
       <div className="space-y-2">
-        <h1 className="text-4xl font-black text-gray-800">Settings</h1>
-        <p className="text-gray-500 font-bold">Customize your learning experience and manage course data.</p>
+        <h1 className="text-4xl font-black text-gray-800 tracking-tight">Settings</h1>
+        <p className="text-lg text-gray-500 font-bold mt-1">Customize your learning experience and manage course data.</p>
       </div>
 
       {/* Language Switcher Section */}
@@ -87,17 +87,17 @@ const SettingsView: React.FC<SettingsViewProps> = ({
           <div className="h-1 flex-1 bg-gray-100 rounded-full"></div>
         </div>
         
-        <div className="duo-card p-6 bg-blue-50/30 border-blue-100 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="duo-card p-6 bg-purple-50/30 border-purple-100 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center space-x-6">
             <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-4xl shadow-sm">🌐</div>
             <div>
-              <p className="text-xs font-black text-blue-400 uppercase tracking-widest">Active Language</p>
-              <h3 className="text-2xl font-black text-blue-700">{availableCourses.find(c => c.id === currentCourseId)?.language || 'None'}</h3>
+              <p className="text-xs font-black text-purple-400 uppercase tracking-widest">Active Language</p>
+              <h3 className="text-2xl font-black text-purple-700">{availableCourses.find(c => c.id === currentCourseId)?.language || 'None'}</h3>
             </div>
           </div>
           <button 
             onClick={() => setIsLanguageModalOpen(true)}
-            className="w-full md:w-auto p-4 px-8 rounded-xl font-black bg-white text-[#1cb0f6] border-2 border-[#1cb0f6] hover:bg-blue-50 transition-all shadow-[0_4px_0_#1cb0f6] active:translate-y-1 active:shadow-none"
+            className="w-full md:w-auto p-4 px-8 rounded-xl font-black bg-white text-[#ad46ff] border-2 border-[#ad46ff] hover:bg-purple-50 transition-all shadow-[0_4px_0_#ad46ff] active:translate-y-1 active:shadow-none"
           >
             SWITCH LANGUAGE
           </button>
@@ -116,7 +116,7 @@ const SettingsView: React.FC<SettingsViewProps> = ({
               </div>
               <button 
                 onClick={() => setIsLanguageModalOpen(false)}
-                className="w-full p-4 rounded-2xl font-black text-white bg-[#1cb0f6] border-b-4 border-[#1899d6] active:translate-y-1 active:border-b-0 transition-all uppercase tracking-widest"
+                className="w-full p-4 rounded-2xl font-black text-white bg-[#ad46ff] border-b-4 border-[#8439a3] active:translate-y-1 active:border-b-0 transition-all uppercase tracking-widest"
               >
                 Close
               </button>
@@ -138,7 +138,7 @@ const SettingsView: React.FC<SettingsViewProps> = ({
               onClick={() => onUpdateProficiency(info.level)}
               className={`duo-card p-4 flex flex-col items-center text-center space-y-3 transition-all transform active:scale-95 group border-2 ${
                 currentProficiency === info.level
-                  ? 'border-[#1cb0f6] bg-[#ddf4ff] shadow-[0_4px_0_#1cb0f6]'
+                  ? 'border-[#ad46ff] bg-purple-50 shadow-[0_4px_0_#ad46ff]'
                   : 'border-gray-100 hover:border-gray-300 shadow-[0_4px_0_#e5e5e5]'
               }`}
             >
@@ -146,7 +146,7 @@ const SettingsView: React.FC<SettingsViewProps> = ({
                 <img src={info.imageUrl} className="w-full h-full object-cover" alt={info.name} />
               </div>
               <div>
-                <h3 className={`font-black text-sm ${currentProficiency === info.level ? 'text-[#1cb0f6]' : 'text-gray-700'}`}>
+                <h3 className={`font-black text-sm ${currentProficiency === info.level ? 'text-[#ad46ff]' : 'text-gray-700'}`}>
                   {info.name}
                 </h3>
                 <p className="text-[10px] font-bold text-gray-400 mt-1 uppercase tracking-tighter">
@@ -171,18 +171,18 @@ const SettingsView: React.FC<SettingsViewProps> = ({
               onClick={() => onUpdateMascot(mascot.id)}
               className={`duo-card p-6 flex flex-col items-center text-center space-y-3 transition-all transform active:scale-95 group border-2 ${
                 selectedMascotId === mascot.id
-                  ? 'border-[#1cb0f6] bg-[#ddf4ff] shadow-[0_4px_0_#1cb0f6]'
+                  ? 'border-[#ad46ff] bg-purple-50 shadow-[0_4px_0_#ad46ff]'
                   : 'border-gray-100 hover:border-gray-300 shadow-[0_4px_0_#e5e5e5]'
               }`}
             >
               <div className="mb-2 group-hover:scale-110 transition-transform">
                 <Mascot id={mascot.id} size={50} />
               </div>
-              <h3 className={`font-black text-sm ${selectedMascotId === mascot.id ? 'text-[#1cb0f6]' : 'text-gray-700'}`}>
+              <h3 className={`font-black text-sm ${selectedMascotId === mascot.id ? 'text-[#ad46ff]' : 'text-gray-700'}`}>
                 {mascot.name}
               </h3>
               {selectedMascotId === mascot.id && (
-                <div className="text-[10px] font-black text-[#1cb0f6] uppercase">Active</div>
+                <div className="text-[10px] font-black text-[#ad46ff] uppercase">Active</div>
               )}
             </button>
           ))}
@@ -198,17 +198,17 @@ const SettingsView: React.FC<SettingsViewProps> = ({
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Create New Course Card */}
-          <div className="duo-card p-8 bg-gradient-to-br from-[#58cc02]/10 to-[#58cc02]/20 border-[#58cc02]/30 flex flex-col justify-between">
+          <div className="duo-card p-8 bg-purple-50 border-purple-200/50 flex flex-col justify-between">
              <div className="space-y-4">
-                <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-3xl shadow-sm border-2 border-[#58cc02]/20">🛠️</div>
+                <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-3xl shadow-sm border-2 border-purple-200 text-[#ad46ff]">🛠️</div>
                 <div>
-                   <h3 className="text-xl font-black text-[#46a302]">Build New Course</h3>
-                   <p className="text-sm text-[#46a302]/70 font-bold leading-relaxed">Design your own curriculum step-by-step with characters, words, and grammar.</p>
+                   <h3 className="text-xl font-black text-[#ad46ff]">Build New Course</h3>
+                   <p className="text-sm text-[#ad46ff]/70 font-bold leading-relaxed">Design your own curriculum step-by-step with characters, words, and grammar.</p>
                 </div>
              </div>
              <button 
               onClick={onCreateCourse}
-              className="mt-8 p-4 bg-[#58cc02] text-white rounded-2xl font-black shadow-[0_4px_0_#46a302] hover:scale-105 active:translate-y-1 active:shadow-none transition-all uppercase tracking-widest text-xs"
+              className="mt-8 p-4 bg-[#ad46ff] text-white rounded-2xl font-black shadow-[0_4px_0_#8439a3] hover:scale-105 active:translate-y-1 active:shadow-none transition-all uppercase tracking-widest text-xs"
              >
                 CREATE COURSE
              </button>
@@ -244,9 +244,9 @@ const SettingsView: React.FC<SettingsViewProps> = ({
             </div>
             <button 
               onClick={() => togglePreference('soundEnabled')}
-              className={`w-14 h-8 rounded-full relative transition-colors ${notificationSettings.soundEnabled ? 'bg-[#58cc02]' : 'bg-gray-200'}`}
+              className={`w-14 h-8 rounded-full relative transition-colors ${notificationSettings.soundEnabled ? 'bg-purple-50' : 'bg-gray-200'}`}
             >
-              <div className={`absolute top-1 w-6 h-6 bg-white rounded-full transition-all shadow-sm ${notificationSettings.soundEnabled ? 'right-1' : 'left-1'}`} />
+              <div className={`absolute top-1 w-6 h-6 rounded-full transition-all shadow-sm ${notificationSettings.soundEnabled ? 'right-1 bg-[#ad46ff]' : 'left-1 bg-white'}`} />
             </button>
           </div>
           <div className="duo-card p-6 flex items-center justify-between">
@@ -256,9 +256,9 @@ const SettingsView: React.FC<SettingsViewProps> = ({
             </div>
             <button 
               onClick={() => togglePreference('motivationalAlerts')}
-              className={`w-14 h-8 rounded-full relative transition-colors ${notificationSettings.motivationalAlerts ? 'bg-[#58cc02]' : 'bg-gray-200'}`}
+              className={`w-14 h-8 rounded-full relative transition-colors ${notificationSettings.motivationalAlerts ? 'bg-purple-50' : 'bg-gray-200'}`}
             >
-              <div className={`absolute top-1 w-6 h-6 bg-white rounded-full transition-all shadow-sm ${notificationSettings.motivationalAlerts ? 'right-1' : 'left-1'}`} />
+              <div className={`absolute top-1 w-6 h-6 rounded-full transition-all shadow-sm ${notificationSettings.motivationalAlerts ? 'right-1 bg-[#ad46ff]' : 'left-1 bg-white'}`} />
             </button>
           </div>
         </div>

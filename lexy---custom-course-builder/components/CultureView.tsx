@@ -33,7 +33,7 @@ const CultureView: React.FC<CultureViewProps> = ({ books = [], cultureItems = []
     return (
       <div 
         key={item.id} 
-        className="duo-card overflow-hidden group hover:border-[#1cb0f6] transition-all flex flex-col cursor-pointer bg-white shrink-0 w-72 sm:w-80"
+        className="duo-card overflow-hidden group hover:border-[#ad46ff] transition-all flex flex-col cursor-pointer bg-white shrink-0 w-72 sm:w-80"
         onClick={() => setSelectedItem(item)}
       >
         <div className="relative h-48 w-full overflow-hidden bg-gray-100">
@@ -49,7 +49,7 @@ const CultureView: React.FC<CultureViewProps> = ({ books = [], cultureItems = []
           )}
         </div>
         <div className="p-5 space-y-1 flex-1 flex flex-col">
-          <span className="text-[10px] font-black text-[#1cb0f6] uppercase tracking-widest">{category}</span>
+          <span className="text-[10px] font-black text-[#ad46ff] uppercase tracking-widest">{category}</span>
           <h3 className="text-lg font-black text-gray-800 leading-tight truncate">{title}</h3>
           {subtitle && <p className="text-[10px] font-bold text-gray-400 truncate">{subtitle}</p>}
           <p className="text-gray-500 font-bold text-xs line-clamp-2 mt-2">{description}</p>
@@ -71,7 +71,7 @@ const CultureView: React.FC<CultureViewProps> = ({ books = [], cultureItems = []
 
     return (
       <div key={category} className="space-y-6">
-        <div className="flex items-center justify-between px-2 border-l-4 border-[#1cb0f6] pl-4">
+        <div className="flex items-center justify-between px-2 border-l-4 border-[#ad46ff] pl-4">
           <h2 className="text-xl font-black text-gray-800 uppercase tracking-widest">{category}</h2>
           <span className="text-[10px] font-black text-gray-300 uppercase tracking-widest">{items.length} Items</span>
         </div>
@@ -85,8 +85,8 @@ const CultureView: React.FC<CultureViewProps> = ({ books = [], cultureItems = []
   return (
     <div className="max-w-7xl mx-auto py-12 px-6 space-y-16 animate-in fade-in slide-in-from-bottom duration-500 pb-32">
       <div className="text-left space-y-4">
-        <h1 className="text-5xl font-black text-gray-800 tracking-tight">Culture Explorer</h1>
-        <p className="text-lg text-gray-500 font-bold max-w-2xl">
+        <h1 className="text-4xl font-black text-gray-800 tracking-tight">Culture Explorer</h1>
+        <p className="text-lg text-gray-500 font-bold mt-1 max-w-2xl">
           Deepen your learning by discovering the cultural soul behind the language.
         </p>
       </div>
@@ -114,7 +114,7 @@ const CultureView: React.FC<CultureViewProps> = ({ books = [], cultureItems = []
             </div>
             <div className="p-10 space-y-6">
               <div className="space-y-2">
-                <span className="px-3 py-1 bg-blue-50 text-[#1cb0f6] rounded-full text-[10px] font-black uppercase tracking-widest">
+                <span className="px-3 py-1 bg-purple-50 text-[#ad46ff] rounded-full text-[10px] font-black uppercase tracking-widest">
                   {'category' in selectedItem ? selectedItem.category : 'Recommended Reading'}
                 </span>
                 <h2 className="text-4xl font-black text-gray-800 leading-tight">{selectedItem.title}</h2>
@@ -130,7 +130,7 @@ const CultureView: React.FC<CultureViewProps> = ({ books = [], cultureItems = []
                     href={selectedItem.mediaUrl} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex-1 bg-[#1cb0f6] text-white p-4 rounded-2xl font-black text-center shadow-[0_4px_0_#1899d6] hover:bg-[#1899d6] active:translate-y-1 active:shadow-none transition-all"
+                    className="flex-1 bg-[#ad46ff] text-white p-4 rounded-2xl font-black text-center shadow-[0_4px_0_#8439a3] hover:bg-[#8439a3] active:translate-y-1 active:shadow-none transition-all"
                   >
                     EXPLORE CONTENT
                   </a>

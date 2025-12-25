@@ -4,7 +4,7 @@ import { CourseData, ProficiencyLevel, CultureItem, Lesson, AICharacter } from '
 export const COLORS = {
   primary: '#ad46ff',
   primaryDark: '#00d4c2',
-  secondary: '#1cb0f6',
+  secondary: '#ad46ff', // Changed from #1cb0f6 to purple
   accent: '#ffc800',
   error: '#ff4b4b',
   text: '#4b4b4b',
@@ -111,7 +111,7 @@ export const DUMMY_COURSE: CourseData = {
     {
       id: "unit-1",
       title: "Essential Greetings",
-      color: "bg-[#c27aff]",
+      color: "bg-[#ad46ff]",
       level: 1,
       lessons: [
         {
@@ -134,21 +134,21 @@ export const DUMMY_COURSE: CourseData = {
     {
       id: "unit-2",
       title: "Daily Life & Routine",
-      color: "bg-[#1cb0f6]",
+      color: "bg-[#58cc02]",
       level: 1,
       lessons: generateDummyLessons("unit-2", 8, 'locked')
     },
     {
       id: "unit-3",
       title: "Travel & Shopping",
-      color: "bg-[#ff9600]",
+      color: "bg-[#ffc800]",
       level: 1,
       lessons: generateDummyLessons("unit-3", 8, 'locked')
     },
     {
       id: "unit-4",
       title: "Work & Business",
-      color: "bg-[#ce82ff]",
+      color: "bg-[#1cb0f6]",
       level: 1,
       lessons: generateDummyLessons("unit-4", 8, 'locked')
     },
@@ -359,7 +359,7 @@ export const MYTHICAL_CHARACTERS: AICharacter[] = [
   {
     id: 'zeus',
     name: 'Zeus',
-    avatar: 'https://cdn-icons-png.flaticon.com/512/3253/3253215.png',
+    avatar: 'https://i.pinimg.com/736x/d1/f4/b3/d1f4b350c48dc8dc2b376c1b73a7b250.jpg',
     role: 'King of Gods',
     description: 'The thunderbolt-wielding ruler of Mount Olympus.',
     personality: 'Majestic, authoritative, occasionally dramatic, but wise.'
@@ -367,7 +367,7 @@ export const MYTHICAL_CHARACTERS: AICharacter[] = [
   {
     id: 'athena',
     name: 'Athena',
-    avatar: 'https://cdn-icons-png.flaticon.com/512/3253/3253216.png',
+    avatar: 'https://i.pinimg.com/736x/61/9e/91/619e91505a96e17b9be3108f091b67cb.jpg',
     role: 'Goddess of Wisdom',
     description: 'Strategist and protector of civilization.',
     personality: 'Logical, insightful, encouraging of learners.'
@@ -375,7 +375,7 @@ export const MYTHICAL_CHARACTERS: AICharacter[] = [
   {
     id: 'odin',
     name: 'Odin',
-    avatar: 'https://cdn-icons-png.flaticon.com/512/3253/3253217.png',
+    avatar: 'https://i.pinimg.com/736x/5b/1d/ca/5b1dca1ae91aa485cead3818ce22e2a4.jpg',
     role: 'All-Father',
     description: 'Seeker of knowledge and master of runes.',
     personality: 'Mysterious, deeply philosophical, value-driven.'
@@ -383,7 +383,7 @@ export const MYTHICAL_CHARACTERS: AICharacter[] = [
   {
     id: 'cleopatra',
     name: 'Cleopatra',
-    avatar: 'https://cdn-icons-png.flaticon.com/512/3253/3253218.png',
+    avatar: 'https://i.pinimg.com/736x/3d/89/c6/3d89c62796b132b741d574fc58740f64.jpg',
     role: 'Pharaoh',
     description: 'The last active ruler of the Ptolemaic Kingdom of Egypt.',
     personality: 'Charismatic, brilliant linguist, politically astute.'
@@ -391,7 +391,7 @@ export const MYTHICAL_CHARACTERS: AICharacter[] = [
   {
     id: 'da_vinci',
     name: 'Leonardo da Vinci',
-    avatar: 'https://cdn-icons-png.flaticon.com/512/3253/3253219.png',
+    avatar: 'https://i.pinimg.com/736x/38/7e/01/387e0126b1205b5c40de13adad0fc90c.jpg',
     role: 'Renaissance Master',
     description: 'Polymath, painter, inventor, and anatomist.',
     personality: 'Curious, imaginative, constantly sketching ideas.'

@@ -38,8 +38,8 @@ const NotificationsView: React.FC<NotificationsViewProps> = ({ settings, onUpdat
   return (
     <div className="max-w-3xl mx-auto py-12 px-6 space-y-12 animate-in fade-in slide-in-from-bottom duration-500 pb-32">
       <div className="text-center md:text-left space-y-2">
-        <h1 className="text-4xl font-black text-gray-800">Reminders</h1>
-        <p className="text-gray-500 font-bold">Stay consistent and never miss a streak.</p>
+        <h1 className="text-4xl font-black text-gray-800 tracking-tight">Reminders</h1>
+        <p className="text-lg text-gray-500 font-bold mt-1">Stay consistent and never miss a streak.</p>
       </div>
 
       <div className="space-y-6">
@@ -47,7 +47,7 @@ const NotificationsView: React.FC<NotificationsViewProps> = ({ settings, onUpdat
           {/* Daily Reminders */}
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-5">
-              <div className="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl shadow-sm">
+              <div className="w-14 h-14 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-3xl shadow-sm">
                 ⏰
               </div>
               <div className="space-y-1">
@@ -57,9 +57,9 @@ const NotificationsView: React.FC<NotificationsViewProps> = ({ settings, onUpdat
             </div>
             <button 
               onClick={() => toggle('remindersEnabled')}
-              className={`w-14 h-8 rounded-full relative transition-colors ${settings.remindersEnabled ? 'bg-[#58cc02]' : 'bg-gray-200'}`}
+              className={`w-14 h-8 rounded-full relative transition-colors ${settings.remindersEnabled ? 'bg-purple-100' : 'bg-gray-200'}`}
             >
-              <div className={`absolute top-1 w-6 h-6 bg-white rounded-full transition-all shadow-sm ${settings.remindersEnabled ? 'right-1' : 'left-1'}`} />
+              <div className={`absolute top-1 w-6 h-6 rounded-full transition-all shadow-sm ${settings.remindersEnabled ? 'right-1 bg-[#ad46ff]' : 'left-1 bg-white'}`} />
             </button>
           </div>
 
@@ -92,9 +92,9 @@ const NotificationsView: React.FC<NotificationsViewProps> = ({ settings, onUpdat
             </div>
             <button 
               onClick={() => toggle('soundEnabled')}
-              className={`w-14 h-8 rounded-full relative transition-colors ${settings.soundEnabled ? 'bg-[#58cc02]' : 'bg-gray-200'}`}
+              className={`w-14 h-8 rounded-full relative transition-colors ${settings.soundEnabled ? 'bg-purple-100' : 'bg-gray-200'}`}
             >
-              <div className={`absolute top-1 w-6 h-6 bg-white rounded-full transition-all shadow-sm ${settings.soundEnabled ? 'right-1' : 'left-1'}`} />
+              <div className={`absolute top-1 w-6 h-6 rounded-full transition-all shadow-sm ${settings.soundEnabled ? 'right-1 bg-[#ad46ff]' : 'left-1 bg-white'}`} />
             </button>
           </div>
 
@@ -103,7 +103,7 @@ const NotificationsView: React.FC<NotificationsViewProps> = ({ settings, onUpdat
           {/* Motivational Alerts */}
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-5">
-              <div className="w-14 h-14 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-3xl shadow-sm">
+              <div className="w-14 h-14 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-3xl shadow-sm">
                 🌟
               </div>
               <div className="space-y-1">
@@ -113,9 +113,9 @@ const NotificationsView: React.FC<NotificationsViewProps> = ({ settings, onUpdat
             </div>
             <button 
               onClick={() => toggle('motivationalAlerts')}
-              className={`w-14 h-8 rounded-full relative transition-colors ${settings.motivationalAlerts ? 'bg-[#58cc02]' : 'bg-gray-200'}`}
+              className={`w-14 h-8 rounded-full relative transition-colors ${settings.motivationalAlerts ? 'bg-purple-100' : 'bg-gray-200'}`}
             >
-              <div className={`absolute top-1 w-6 h-6 bg-white rounded-full transition-all shadow-sm ${settings.motivationalAlerts ? 'right-1' : 'left-1'}`} />
+              <div className={`absolute top-1 w-6 h-6 rounded-full transition-all shadow-sm ${settings.motivationalAlerts ? 'right-1 bg-[#ad46ff]' : 'left-1 bg-white'}`} />
             </button>
           </div>
         </div>

@@ -28,9 +28,9 @@ const GamesView: React.FC<GamesViewProps> = ({ dictionary = [] }) => {
   return (
     <div className="max-w-6xl mx-auto py-12 px-6 space-y-12 animate-in fade-in duration-500 pb-32">
       <div className="flex items-center justify-between">
-        <div className="space-y-1">
-          <h1 className="text-5xl font-black text-gray-800 tracking-tight">Game Studio</h1>
-          <p className="text-gray-500 font-bold">Learn through play and earn bonus XP!</p>
+        <div className="space-y-2">
+          <h1 className="text-4xl font-black text-gray-800 tracking-tight">Game Studio</h1>
+          <p className="text-lg text-gray-500 font-bold mt-1">Learn through play and earn bonus XP!</p>
         </div>
         <div className="bg-yellow-100 p-3 px-6 rounded-2xl border-2 border-yellow-200 flex items-center gap-3">
           <span className="text-2xl">⚡</span>
@@ -47,7 +47,7 @@ const GamesView: React.FC<GamesViewProps> = ({ dictionary = [] }) => {
             title="Word Scramble" 
             desc="Rearrange tiles to form the correct word." 
             icon="🔠" 
-            color="bg-blue-500" 
+            color="bg-purple-500" 
             onClick={() => setActiveGame('scramble')} 
           />
           <GameCard 
@@ -87,7 +87,7 @@ const GamesView: React.FC<GamesViewProps> = ({ dictionary = [] }) => {
 const GameCard: React.FC<{ title: string; desc: string; icon: string; color: string; onClick: () => void }> = ({ title, desc, icon, color, onClick }) => (
   <button 
     onClick={onClick}
-    className="duo-card p-8 group hover:border-[#1cb0f6] transition-all flex flex-col items-center text-center space-y-6"
+    className="duo-card p-8 group hover:border-[#ad46ff] transition-all flex flex-col items-center text-center space-y-6"
   >
     <div className={`w-24 h-24 ${color} rounded-3xl flex items-center justify-center text-5xl shadow-lg group-hover:scale-110 transition-transform`}>
       {icon}
@@ -97,7 +97,7 @@ const GameCard: React.FC<{ title: string; desc: string; icon: string; color: str
       <p className="text-gray-500 font-bold text-sm leading-relaxed">{desc}</p>
     </div>
     <div className="w-full pt-4">
-      <div className="bg-gray-100 text-gray-400 font-black text-[10px] uppercase py-2 rounded-xl group-hover:bg-[#1cb0f6] group-hover:text-white transition-colors">
+      <div className="bg-gray-100 text-gray-400 font-black text-[10px] uppercase py-2 rounded-xl group-hover:bg-[#ad46ff] group-hover:text-white transition-colors">
         Play Now
       </div>
     </div>
@@ -145,7 +145,7 @@ const ScrambleGame: React.FC<{ dictionary: DictionaryEntry[]; onWin: () => void;
     <div className="duo-card p-10 bg-white flex flex-col items-center space-y-12 animate-in zoom-in duration-300">
       <div className="w-full flex justify-between items-center">
         <button onClick={onExit} className="text-gray-400 font-bold hover:text-gray-600">BACK</button>
-        <span className="font-black text-blue-500 uppercase tracking-widest text-xs">Word Scramble</span>
+        <span className="font-black text-[#ad46ff] uppercase tracking-widest text-xs">Word Scramble</span>
         <div className="w-8" />
       </div>
 
@@ -156,7 +156,7 @@ const ScrambleGame: React.FC<{ dictionary: DictionaryEntry[]; onWin: () => void;
 
       <div className="flex flex-wrap gap-4 justify-center min-h-[80px] p-6 bg-gray-50 rounded-3xl w-full max-w-2xl border-2 border-dashed border-gray-200">
         {selected.map((idx, i) => (
-          <div key={i} className="w-14 h-14 bg-white border-b-4 border-blue-500 rounded-xl flex items-center justify-center text-2xl font-black text-blue-600 shadow-sm animate-in zoom-in">
+          <div key={i} className="w-14 h-14 bg-white border-b-4 border-[#ad46ff] rounded-xl flex items-center justify-center text-2xl font-black text-purple-600 shadow-sm animate-in zoom-in">
             {shuffled[idx]}
           </div>
         ))}
@@ -391,7 +391,7 @@ const CrosswordGame: React.FC<{ dictionary: DictionaryEntry[]; onWin: () => void
                       maxLength={1}
                       value={inputs[`${rIdx}-${cIdx}`] || ''}
                       onChange={(e) => handleInput(rIdx, cIdx, e.target.value)}
-                      className={`w-full h-full text-center font-black text-xl uppercase outline-none focus:bg-blue-50 transition-colors ${status === 'won' ? 'text-green-600' : 'text-gray-800'}`}
+                      className={`w-full h-full text-center font-black text-xl uppercase outline-none focus:bg-purple-50 transition-colors ${status === 'won' ? 'text-green-600' : 'text-gray-800'}`}
                     />
                   </>
                 )}
@@ -403,7 +403,7 @@ const CrosswordGame: React.FC<{ dictionary: DictionaryEntry[]; onWin: () => void
 
       <div className="md:w-72 space-y-8">
         <div className="space-y-4">
-          <h3 className="font-black text-xs text-blue-500 uppercase tracking-widest border-b-2 border-blue-50 pb-2">Across</h3>
+          <h3 className="font-black text-xs text-[#ad46ff] uppercase tracking-widest border-b-2 border-purple-50 pb-2">Across</h3>
           {clues.across.map(c => (
             <div key={c.num} className="space-y-1">
               <p className="text-sm font-black text-gray-700">{c.num}. {c.clue}</p>

@@ -128,7 +128,7 @@ const WritingPad: React.FC = () => {
     <div className="max-w-5xl mx-auto py-10 px-6 space-y-10 animate-in fade-in slide-in-from-bottom duration-500">
       <div className="text-left space-y-2">
         <h1 className="text-4xl font-black text-gray-800 tracking-tight">Writing Studio</h1>
-        <p className="text-gray-500 font-bold">Pick a letter and practice your handwriting!</p>
+        <p className="text-lg text-gray-500 font-bold mt-1">Pick a letter and practice your handwriting!</p>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8">
@@ -141,7 +141,7 @@ const WritingPad: React.FC = () => {
                 onClick={() => setSelectedLetter(letter)}
                 className={`p-3 rounded-xl font-black text-xl transition-all ${
                   selectedLetter === letter
-                    ? 'bg-[#1cb0f6] text-white shadow-[0_4px_0_#1899d6]'
+                    ? 'bg-[#ad46ff] text-white shadow-[0_4px_0_#8439a3]'
                     : 'bg-gray-50 text-gray-500 hover:bg-gray-100'
                 }`}
               >
@@ -186,7 +186,7 @@ const WritingPad: React.FC = () => {
             
             <button
               onClick={speak}
-              className="bg-[#1cb0f6] text-white p-4 px-10 rounded-2xl font-black shadow-[0_4px_0_#1899d6] hover:bg-[#1899d6] active:translate-y-1 active:shadow-none flex items-center gap-3 transition-all"
+              className="bg-[#ad46ff] text-white p-4 px-10 rounded-2xl font-black shadow-[0_4px_0_#8439a3] hover:bg-[#8439a3] active:translate-y-1 active:shadow-none flex items-center gap-3 transition-all"
             >
               <span className="text-xl">🔊</span>
               <span>LISTEN</span>
