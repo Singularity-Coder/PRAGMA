@@ -1,2 +1,2 @@
 # LEXY
-Attain pragmatic fluency in languages using this offline App. 
+Achieve real-world fluency using scientifically proven techniques—all in one powerful offline app.
