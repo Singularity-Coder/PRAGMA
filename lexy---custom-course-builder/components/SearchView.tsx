@@ -160,7 +160,7 @@ const SearchView: React.FC<SearchViewProps> = ({ course, onToggleSaveWord, saved
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div className="space-y-2">
           <h1 className="text-4xl font-black text-gray-800 tracking-tight">Explore Course</h1>
-          <p className="text-lg text-gray-500 font-bold mt-1">Discover language content through three powerful ways.</p>
+          <p className="text-lg text-gray-500 font-bold mt-1">Discover language content.</p>
         </div>
         
         <div className="flex p-1 bg-gray-100 rounded-2xl shrink-0">

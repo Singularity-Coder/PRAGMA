@@ -65,8 +65,8 @@ const Sidebar: React.FC<SidebarProps> = ({
         </div>
 
         {/* Scrollable Content */}
-        <div className="flex-1 overflow-y-auto scrollbar-hide px-6 pt-4 pb-10 space-y-8">
-          <div className="space-y-5">
+        <div className="flex-1 overflow-y-auto scrollbar-hide px-6 pt-4 pb-10 space-y-4">
+          <div className="space-y-4">
             {/* Language & Stage Card */}
             <div 
               onClick={() => {

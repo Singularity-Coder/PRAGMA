@@ -90,8 +90,8 @@ const AIChatsView: React.FC<AIChatsViewProps> = ({ currentLanguage }) => {
           {/* Header Section */}
           <div className="pt-10 px-8 pb-8 border-b-2 border-gray-100 bg-white shrink-0">
             <h1 className="text-4xl font-black text-gray-800 tracking-tight">AI Chats</h1>
-            <p className="text-sm text-gray-400 font-bold mt-2 leading-relaxed">
-              Chat with Gods, Mythical creatures and other historical figures of <span className="text-[#ad46ff] font-black">{currentLanguage}</span> language
+            <p className="text-lg text-gray-500 font-bold mt-1">
+              Chat with figures of <span className="text-[#ad46ff] font-black">{currentLanguage}</span> language.
             </p>
           </div>
 
