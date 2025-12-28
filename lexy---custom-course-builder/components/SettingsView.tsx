@@ -298,17 +298,20 @@ const SettingsView: React.FC<SettingsViewProps> = ({
                </button>
             </div>
 
-            {/* Import JSON Card */}
+            {/* Import LEXY Card */}
             <div className="duo-card p-8 bg-white flex flex-col justify-between">
                <div className="space-y-4">
                   <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center text-3xl shadow-sm border-2 border-gray-100">📂</div>
                   <div>
-                     <h3 className="text-xl font-black text-gray-700">Import JSON</h3>
-                     <p className="text-sm text-gray-400 font-bold leading-relaxed">Upload a .json file containing course data to instantly add it to your library.</p>
+                     <h3 className="text-xl font-black text-gray-700">Import LEXY</h3>
+                     <p className="text-sm text-gray-400 font-bold leading-relaxed">Upload a .lexy file containing course data to instantly add it to your library.</p>
                   </div>
                </div>
                <div className="mt-8">
-                  <UploadManager onCourseLoaded={onCourseLoaded} />
+                  <UploadManager 
+                    onCourseLoaded={onCourseLoaded} 
+                    existingCourses={availableCourses.map(c => c.language)}
+                  />
                </div>
             </div>
           </div>

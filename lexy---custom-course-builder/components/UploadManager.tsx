@@ -1,25 +1,27 @@
 
 import React, { useState } from 'react';
 import { CourseData } from '../types';
+import JSZip from 'jszip';
 
 interface UploadManagerProps {
   onCourseLoaded: (course: CourseData, mediaMap: Map<string, string>) => void;
+  existingCourses: string[]; // Pass language names or IDs to detect conflicts
 }
 
-const UploadManager: React.FC<UploadManagerProps> = ({ onCourseLoaded }) => {
-  const [jsonFile, setJsonFile] = useState<File | null>(null);
+const UploadManager: React.FC<UploadManagerProps> = ({ onCourseLoaded, existingCourses }) => {
+  const [lexyFile, setLexyFile] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleJsonChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setJsonFile(e.target.files[0]);
+      setLexyFile(e.target.files[0]);
     }
   };
 
   const handleUpload = async () => {
-    if (!jsonFile) {
-      setError("Please select a course JSON file.");
+    if (!lexyFile) {
+      setError("Please select a .lexy course file.");
       return;
     }
 
@@ -27,13 +29,74 @@ const UploadManager: React.FC<UploadManagerProps> = ({ onCourseLoaded }) => {
     setError(null);
 
     try {
-      const jsonText = await jsonFile.text();
-      const courseData: CourseData = JSON.parse(jsonText);
-      // Media map is empty as folder upload is removed per request
-      onCourseLoaded(courseData, new Map());
+      // 1. Load the .lexy ZIP package
+      const zip = await JSZip.loadAsync(lexyFile);
+      
+      // 2. Find and parse manifest.json
+      const manifestFile = zip.file("manifest.json");
+      if (!manifestFile) {
+        throw new Error("Invalid .lexy file: manifest.json not found.");
+      }
+
+      const manifestContent = await manifestFile.async("string");
+      const manifest = JSON.parse(manifestContent);
+
+      if (manifest.format !== "lexy-package") {
+        throw new Error("Invalid file format. This is not a Lexy package.");
+      }
+
+      const language = manifest.fields?.language || "Unknown";
+
+      // 3. Conflict Detection
+      // ID logic: We often use language name as an implicit ID match for replacements
+      const hasConflict = existingCourses.some(lang => lang.toLowerCase() === language.toLowerCase());
+      if (hasConflict) {
+        const confirmed = window.confirm(
+          `A course for "${language}" already exists. Do you want to replace its content with this import?`
+        );
+        if (!confirmed) {
+          setIsLoading(false);
+          return;
+        }
+      }
+
+      // 4. Extract Linked Data Files
+      const dataFiles = manifest.dataFiles || {};
+      
+      const loadJson = async (path: string) => {
+        const file = zip.file(path);
+        if (!file) return [];
+        return JSON.parse(await file.async("string"));
+      };
+
+      const dictionary = dataFiles.dictionary ? await loadJson(dataFiles.dictionary.path) : [];
+      const grammar = dataFiles.grammar ? await loadJson(dataFiles.grammar.path) : [];
+      const cultureItems = dataFiles.culture ? await loadJson(dataFiles.culture.path) : [];
+      const units = dataFiles.units ? await loadJson(dataFiles.units.path) : [];
+
+      // 5. Construct Final CourseData
+      const courseData: CourseData = {
+        id: manifest.courseId || `course-${Date.now()}`,
+        courseTitle: manifest.fields?.title || "Imported Course",
+        language: language,
+        units: units,
+        dictionary: dictionary,
+        grammar: grammar,
+        cultureItems: cultureItems
+      };
+      
+      // 6. Media mapping (Placeholder for future assets)
+      const mediaMap = new Map<string, string>();
+      
+      onCourseLoaded(courseData, mediaMap);
+      
+      // Clear file after success
+      setLexyFile(null);
+      (document.getElementById('lexy-upload-input') as HTMLInputElement).value = '';
+      
     } catch (err) {
       console.error(err);
-      setError("Failed to process JSON file. Ensure it follows the required format.");
+      setError("Failed to process .lexy file. Ensure it is a valid package.");
     } finally {
       setIsLoading(false);
     }
@@ -43,10 +106,11 @@ const UploadManager: React.FC<UploadManagerProps> = ({ onCourseLoaded }) => {
     <div className="p-0 bg-transparent space-y-4">
       <div className="space-y-2">
         <input 
+          id="lexy-upload-input"
           type="file" 
-          accept=".json"
-          onChange={handleJsonChange}
-          className="w-full p-4 border-2 border-dashed rounded-2xl border-gray-100 focus:border-[#58cc02] outline-none text-xs font-bold text-gray-400 bg-gray-50/50 cursor-pointer"
+          accept=".lexy,.zip"
+          onChange={handleFileChange}
+          className="w-full p-4 border-2 border-dashed rounded-2xl border-gray-100 focus:border-[#ad46ff] outline-none text-xs font-bold text-gray-400 bg-gray-50/50 cursor-pointer"
         />
       </div>
 
@@ -60,12 +124,12 @@ const UploadManager: React.FC<UploadManagerProps> = ({ onCourseLoaded }) => {
       <div className="pt-2">
         <button
           onClick={handleUpload}
-          disabled={isLoading || !jsonFile}
+          disabled={isLoading || !lexyFile}
           className={`w-full p-4 rounded-2xl font-extrabold text-white transition-all transform active:scale-95 uppercase tracking-wider text-xs ${
-            !jsonFile ? 'bg-gray-200 cursor-not-allowed' : 'bg-[#1cb0f6] border-b-4 border-[#1899d6]'
+            !lexyFile ? 'bg-gray-200 cursor-not-allowed' : 'bg-[#1cb0f6] border-b-4 border-[#1899d6]'
           }`}
         >
-          {isLoading ? 'Processing...' : 'Import Course'}
+          {isLoading ? 'Processing...' : 'Import LEXY'}
         </button>
       </div>
     </div>

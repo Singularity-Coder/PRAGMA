@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { CourseData, DictionaryEntry, GrammarLesson, CultureItem, Unit } from '../types';
+import JSZip from 'jszip';
 
 interface CourseBuilderProps {
   onCourseSaved: (course: CourseData) => void;
@@ -58,15 +59,50 @@ const CourseBuilder: React.FC<CourseBuilderProps> = ({ onCourseSaved, onCancel }
     onCourseSaved(finalCourse);
   };
 
-  const handleExportJSON = () => {
-    const dataStr = JSON.stringify(course, null, 2);
-    const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
-    const exportFileDefaultName = `${course.language || 'course'}_data.json`;
+  const handleExportLexy = async () => {
+    const zip = new JSZip();
+    
+    // 1. Create Data Files
+    zip.file("data/dictionary.json", JSON.stringify(course.dictionary || [], null, 2));
+    zip.file("data/grammar.json", JSON.stringify(course.grammar || [], null, 2));
+    zip.file("data/culture.json", JSON.stringify(course.cultureItems || [], null, 2));
+    zip.file("data/units.json", JSON.stringify(course.units || [], null, 2));
+    
+    // 2. Create manifest.json as the entry point
+    const manifest = {
+      format: "lexy-package",
+      version: 1,
+      fields: {
+        title: course.courseTitle || "Untitled Course",
+        description: `A custom language course for ${course.language}`,
+        author: "Lexy User",
+        language: course.language || "Unknown"
+      },
+      assets: {}, // Future: map uploads here
+      dataFiles: {
+        dictionary: { path: "data/dictionary.json", version: 1 },
+        grammar: { path: "data/grammar.json", version: 1 },
+        culture: { path: "data/culture.json", version: 1 },
+        units: { path: "data/units.json", version: 1 }
+      },
+      // Keep the ID for reference
+      courseId: course.id
+    };
+    
+    zip.file("manifest.json", JSON.stringify(manifest, null, 2));
+    
+    // 3. Generate the .lexy file (ZIP blob)
+    const blob = await zip.generateAsync({ type: "blob" });
+    const dataUri = URL.createObjectURL(blob);
+    const exportFileDefaultName = `${(course.language || 'course').toLowerCase()}_bundle.lexy`;
 
     const linkElement = document.createElement('a');
     linkElement.setAttribute('href', dataUri);
     linkElement.setAttribute('download', exportFileDefaultName);
     linkElement.click();
+    
+    // Cleanup
+    setTimeout(() => URL.revokeObjectURL(dataUri), 100);
   };
 
   return (
@@ -111,10 +147,10 @@ const CourseBuilder: React.FC<CourseBuilderProps> = ({ onCourseSaved, onCancel }
              </button>
              
              <button 
-              onClick={handleExportJSON}
+              onClick={handleExportLexy}
               className="w-full p-4 bg-white text-gray-400 rounded-2xl font-black border-2 border-gray-100 shadow-[0_4px_0_#e5e5e5] hover:bg-gray-50 active:translate-y-1 active:shadow-none transition-all uppercase tracking-widest text-[10px]"
              >
-                EXPORT TO JSON
+                EXPORT TO LEXY
              </button>
 
              <p className="mt-3 text-[10px] text-center text-gray-400 font-bold leading-relaxed px-2">
