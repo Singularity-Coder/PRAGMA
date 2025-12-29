@@ -9,7 +9,7 @@ import VocabularyView from './components/VocabularyView';
 import GrammarView from './components/GrammarView';
 import GamesView from './components/GamesView';
 import WritingPad from './components/WritingPad';
-import CultureView from './components/CultureView';
+import CultureView, { CultureDetailView } from './components/CultureView';
 import SettingsView from './components/SettingsView';
 import SearchView from './components/SearchView';
 import NotificationsView from './components/NotificationsView';
@@ -17,7 +17,7 @@ import ProfileView from './components/ProfileView';
 import MyListsView from './components/MyListsView';
 import AIChatsView from './components/AIChatsView';
 import CourseBuilder from './components/CourseBuilder';
-import { CourseData, Lesson, UserStats, Exercise, ProficiencyLevel, NotificationSettings, ViewType } from './types';
+import { CourseData, Lesson, UserStats, Exercise, ProficiencyLevel, NotificationSettings, ViewType, CultureItem, BookRecommendation } from './types';
 import { DUMMY_COURSE, PROFICIENCY_LEVELS } from './constants';
 
 const App: React.FC = () => {
@@ -31,6 +31,7 @@ const App: React.FC = () => {
   const [mediaMap, setMediaMap] = useState<Map<string, string>>(new Map());
   const [activeLesson, setActiveLesson] = useState<Lesson | null>(null);
   const [editingCourse, setEditingCourse] = useState<CourseData | null>(null);
+  const [selectedCultureItem, setSelectedCultureItem] = useState<CultureItem | BookRecommendation | null>(null);
   
   const INITIAL_STATS: UserStats = {
     xp: 0,
@@ -301,7 +302,7 @@ const App: React.FC = () => {
         {activeView === 'grammar' && <GrammarView lessons={course.grammar} />}
         {activeView === 'games' && <GamesView dictionary={course.dictionary} />}
         {activeView === 'writing' && <WritingPad />}
-        {activeView === 'culture' && <CultureView books={course.books} cultureItems={course.cultureItems} />}
+        {activeView === 'culture' && <CultureView books={course.books} cultureItems={course.cultureItems} onSelectItem={setSelectedCultureItem} />}
         {activeView === 'search' && <SearchView course={course} onToggleSaveWord={handleToggleSaveWord} savedWordIds={stats.savedWordIds[course.language] || []} />}
         {activeView === 'notifications' && <NotificationsView settings={stats.notifications} onUpdate={handleUpdateNotifications} />}
         {activeView === 'my-lists' && <MyListsView dictionary={course.dictionary} savedWordIds={stats.savedWordIds[course.language] || []} onToggleSaveWord={handleToggleSaveWord} />}
@@ -339,6 +340,14 @@ const App: React.FC = () => {
         {activeView === 'review' && <ReviewMode exercises={stats.failedExercises} onClose={() => setActiveView('home')} />}
         {activeLesson && <LessonSession lesson={activeLesson} mediaMap={mediaMap} onFinish={handleFinishLesson} onQuit={() => setActiveLesson(null)} />}
       </main>
+
+      {/* GLOBAL FULL-SCREEN OVERLAYS */}
+      {selectedCultureItem && (
+        <CultureDetailView 
+          item={selectedCultureItem} 
+          onClose={() => setSelectedCultureItem(null)} 
+        />
+      )}
     </div>
   );
 };
